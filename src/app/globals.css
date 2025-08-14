@@ -1,0 +1,134 @@
+@import "tailwindcss";
+
+* {
+  box-sizing: border-box;
+}
+
+:root {
+
+  --font-cormorant: 'Cormorant Garamond', serif;
+  --font-poppins: 'Poppins', sans-serif;
+
+  --text-primary: #0a0a0a;
+  --text-secondary: #0a0a0a;
+  --text-inverse: #f7f8fa;
+  --highlight: #3a459e;
+  --bg-600: #cbd5e1;
+  --bg-700: #e2e8f0;
+  --bg-800: #fff;
+  --bg-900: #f7f8fa;
+  --backdrop: #fffc;
+  --background: #fff;
+  --foreground: #09090b;
+  --card: #fff;
+  --card-foreground: #09090b;
+  --popover: #fff;
+  --popover-foreground: #09090b;
+  --primary: #18181b;
+  --primary-foreground: #fafafa;
+  --secondary: #f4f4f5;
+  --secondary-foreground: #18181b;
+  --muted: #f4f4f5;
+  --muted-foreground: #71717a;
+  --accent: #f4f4f5;
+  --accent-foreground: #18181b;
+  --destructive: #ef4444;
+  --destructive-foreground: #fafafa;
+  --border: #e4e4e7;
+  --input: #e4e4e7;
+  --ring: #09090b;
+  --radius: .5rem;
+
+  --gradient-start: rgba(247, 248, 250, 0.9);
+  --gradient-end: rgba(247, 248, 250, 0);
+
+  --loading-bg-rgb: rgba(0, 0, 0, 0.2);
+}
+
+@theme inline {
+  --color-background: var(--background);
+  --color-foreground: var(--foreground);
+  --font-sans: var(--font-geist-sans);
+  --font-mono: var(--font-geist-mono);
+}
+
+
+
+.text-primary {
+  color: var(--text-primary);
+}
+
+body {
+  background: var(--background);
+  color: var(--foreground);
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  font-family: var(--font-cormorant);
+}
+
+h2 {
+  color: var(--highlight);
+}
+
+p,
+a {
+  font-family: var(--font-poppins);
+}
+
+span {
+  font-size: inherit;
+  font-family: inherit;
+}
+
+
+
+.letter-spacing-link {
+  letter-spacing: .2rem;
+}
+
+
+.lists a {
+  display: inline-flex;
+  white-space: nowrap;
+  position: relative;
+  transition: color 0.3s ease, transform 0.2s ease;
+  color: #fff;
+  letter-spacing: .2rem;
+}
+
+.lists a:hover {
+  transform: translateY(-1px);
+}
+
+.lists a:hover::before {
+  transform: scaleX(1);
+  transform-origin: left;
+}
+
+.lists a::before {
+  background-color: currentColor;
+  bottom: -0.1em;
+  content: "";
+  height: 0.1em;
+  left: 0;
+  min-height: 1px;
+  position: absolute;
+  right: 0;
+  transform: scaleX(0);
+  transform-origin: right;
+  transition: transform 0.75s cubic-bezier(0.19, 1, 0.22, 1);
+}
+
+
+.paragraph-style {
+  font-family: Gt, sans-serif;
+  font-weight: 300;
+  /* color: #000; */
+  color: var(--text-secondary);
+  line-height: 1.66;
+}
