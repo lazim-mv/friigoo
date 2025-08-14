@@ -12,8 +12,8 @@ import advSvg from '../../../public/about/adv.svg'
 import relax from '../../../public/about/relax.jpg'
 import adv from '../../../public/about/adv.jpg'
 
-import Lottie from "lottie-react";
-import lottie1 from "../../../public/about/lotiie1.json";
+// import Lottie from "lottie-react";
+// import lottie1 from "../../../public/about/lotiie1.json";
 import { useGSAP } from '@gsap/react'
 import gsap from '../utils/gsapInit'
 
