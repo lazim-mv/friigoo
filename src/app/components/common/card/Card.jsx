@@ -7,7 +7,7 @@ const PackageCard = ({ travelPackages }) => {
     if (!travelPackages || travelPackages.length === 0) return null;
 
     return (
-        <div className="px-32 py-24 grid grid-cols-3 gap-6">
+        <div className="section md:grid flex flex-col grid-cols-3 gap-8 md:gap-6">
             {travelPackages.map((pkg, idx) => (
                 <div
                     key={idx}
@@ -49,27 +49,29 @@ const PackageCard = ({ travelPackages }) => {
                         <hr className="my-5 w-full bg-black/20" />
 
                         {/* Actions */}
-                        <div className="mb-5 flex justify-between w-full">
-                            <div className="flex gap-5">
+                        <div className="mb-5 flex justify-between w-full gap-2 flex-wrap">
+                            <div className="flex gap-5 md:gap-2 lg:gap-2">
                                 <button
-                                    className="cursor-pointer p-3 bg-[#f3f2ee] backdrop-blur-sm rounded-lg
+                                    className="cursor-pointer p-3 bg-transparent backdrop-blur-sm rounded-lg
                                         hover:bg-black/20 transition-all duration-300 border border-black/20"
                                 >
                                     <MessageCircle size={20} color="black" />
                                 </button>
                                 <button
-                                    className="cursor-pointer p-3 bg-[#f3f2ee] backdrop-blur-sm rounded-lg
+                                    className="cursor-pointer p-3 bg-transparent backdrop-blur-sm rounded-lg
                                         hover:bg-black/20 transition-all duration-300 border border-black/20"
                                 >
                                     <PhoneCall size={20} color="black" />
                                 </button>
                             </div>
-                            <CTAButton
-                                label="Book Now"
-                                textColor="#0a0a0a"
-                                bgColor="bg-black/10"
-                                borderColor="border-black/10"
-                            />
+                            <div className=''>
+                                <CTAButton
+                                    label="Book Now"
+                                    textColor="#0a0a0a"
+                                    bgColor="bg-black/10"
+                                    borderColor="border-black/10"
+                                />
+                            </div>
                         </div>
                     </div>
                 </div>

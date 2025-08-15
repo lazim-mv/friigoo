@@ -182,19 +182,20 @@ const About = () => {
     }, { scope: containerRef })
 
     return (
-        <div ref={containerRef} className='px-32 py-24 overflow-hidden'>
-            <div className='flex justify-between items-center '>
-                <div ref={mapRef} className='w-[45%]'>
-                    <Image src={map} alt='world map' />
-                    {/* <Lottie animationData={lottie1} loop={false} /> */}
+        <div ref={containerRef} className="section overflow-hidden">
+            <div className="flex flex-col lg:flex-row justify-between items-center gap-10 lg:gap-0">
+                {/* Map */}
+                <div ref={mapRef} className="w-full lg:w-[45%]">
+                    <Image src={map} alt="world map" className="w-full h-auto" />
                 </div>
-                <div ref={textRef} className='flex flex-col items-start justify-center h-full w-[45%]'>
-                    <h2 className='text-6xl mb-10 leading-tight'>
-                        Magical Memories,<br />
-                        Bespoke Experiences
+
+                {/* Text */}
+                <div ref={textRef} className="flex flex-col items-start justify-center h-full w-full lg:w-[45%]">
+                    <h2 className="text-3xl md:text-4xl lg:text-6xl mb-6 md:mb-8 lg:mb-10 leading-tight">
+                        Magical Memories,<br />Bespoke Experiences
                     </h2>
-                    <p className='w-[90%] text-[17px] font-light paragraph-style mb-9 leading-relaxed'>
-                        At Friigoo, we believe travel is more than moving from one place to another — it's about creating stories you'll
+                    <p className="w-full md:w-[90%] text-base lg:text[17px] md:text-[16px] font-light paragraph-style mb-6 md:mb-8 leading-relaxed">
+                        At Friigoo, we believe travel is more than moving from one place to another it's about creating stories you'll
                         tell for a lifetime. From hidden corners of the world to iconic landmarks, we craft every journey to match your
                         unique style.
                         <br /><br />
@@ -203,61 +204,63 @@ const About = () => {
                     </p>
 
                     <CTAButton
-                        label='Know More'
-                        textColor='#0a0a0a'
-                        bgColor='bg-black/10'
-                        borderColor='border-black/10'
+                        label="Know More"
+                        textColor="#0a0a0a"
+                        bgColor="bg-black/10"
+                        borderColor="border-black/10"
                     />
                 </div>
             </div>
 
-            <div ref={cardsRef} className="pt-16 grid grid-cols-3 gap-6">
-                {
-                    [
-                        {
-                            title: "Hidden Wonders",
-                            img: siteseeing,
-                            alt: "guided exploration tours",
-                            svg: advSvg,
-                            svgAlt: "exploration icon",
-                            bg: "bg-black/5"
-                        },
-                        {
-                            title: "Epic Adventures",
-                            img: adv,
-                            alt: "adventure holiday packages",
-                            svg: site,
-                            svgAlt: "adventure icon",
-                            bg: "bg-black/10"
-                        },
-                        {
-                            title: "Unwind in Paradise",
-                            img: relax,
-                            alt: "luxury relaxation getaways",
-                            svg: relaxSvg,
-                            svgAlt: "relaxation icon",
-                            bg: "bg-black/10"
-                        }
-                    ].map((card, index) => (
-                        <div
-                            key={index}
-                            className={`card-item z-20 ${card.bg} backdrop-blur-sm rounded-lg overflow-hidden border border-black/10 shadow-xl shadow-gray-600/50 border-b-0  transition-shadow duration-300 hover:shadow-2xl hover:shadow-gray-600/60`}
-                        >
-                            <div className="relative">
-                                <Image
-                                    src={card.img}
-                                    height={120}
-                                    alt={card.alt}
-                                    className="card-image w-[100%] object-cover h-[120px] transition-transform duration-500"
-                                    style={{ filter: "brightness(0.6)" }}
-                                />
-
-                                <h3 className="card-title absolute top-8 text-white text-3xl text-center py-3 z-10 w-[100%] font-medium transition-transform duration-300">
-                                    {card.title}
-                                </h3>
-                            </div>
+            {/* Cards */}
+            <div ref={cardsRef} className="pt-12 md:pt-14 lg:pt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+                {[
+                    {
+                        title: "Hidden Wonders",
+                        img: siteseeing,
+                        alt: "guided exploration tours",
+                        svg: advSvg,
+                        svgAlt: "exploration icon",
+                        bg: "bg-black/5"
+                    },
+                    {
+                        title: "Epic Adventures",
+                        img: adv,
+                        alt: "adventure holiday packages",
+                        svg: site,
+                        svgAlt: "adventure icon",
+                        bg: "bg-black/10"
+                    },
+                    {
+                        title: "Unwind in Paradise",
+                        img: relax,
+                        alt: "luxury relaxation getaways",
+                        svg: relaxSvg,
+                        svgAlt: "relaxation icon",
+                        bg: "bg-black/10"
+                    }
+                ].map((card, index) => (
+                    <div
+                        key={index}
+                        className={`card-item z-20 ${card.bg} backdrop-blur-sm rounded-lg overflow-hidden border border-black/10 shadow-xl shadow-gray-600/50 border-b-0 transition-shadow duration-300 hover:shadow-2xl hover:shadow-gray-600/60`}
+                    >
+                        <div className="relative">
+                            <Image
+                                src={card.img}
+                                height={120}
+                                alt={card.alt}
+                                className="card-image w-full object-cover h-[120px] sm:h-[180px] md:h-[120px] lg:h-[120px] transition-transform duration-500"
+                                style={{ filter: "brightness(0.6)" }}
+                            />
+                            <h3 className="card-title absolute top-8 text-white 
+                             text-center py-3 z-10
+                             w-full font-medium transition-transform duration-300"
+                            >
+                                {card.title}
+                            </h3>
                         </div>
-                    ))}
+                    </div>
+                ))}
             </div>
         </div>
     )

@@ -19,7 +19,7 @@ const CTAButton = ({
         border ${borderColor} ${textColor}
       `}
         >
-            <span className="text-[16px] font-normal letter-spacing-link">
+            <span className="text-[16px] font-normal letter-spacing-link whitespace-nowrap">
                 {label}
             </span>
 

@@ -97,8 +97,8 @@ span {
   white-space: nowrap;
   position: relative;
   transition: color 0.3s ease, transform 0.2s ease;
-  color: #fff;
-  letter-spacing: .2rem;
+  /* color: #fff; */
+  /* letter-spacing: .2rem; */
 }
 
 .lists a:hover {
@@ -131,4 +131,114 @@ span {
   /* color: #000; */
   color: var(--text-secondary);
   line-height: 1.66;
+}
+
+.light-header .nav-link {
+  color: black !important;
+}
+
+.light-header .search-btn {
+  background-color: rgba(0, 0, 0, 0.05) !important;
+  border-color: rgba(0, 0, 0, 0.1) !important;
+}
+
+.section {
+  padding: 40px 30px;
+  /* default mobile padding */
+}
+
+.sectionMargin {
+  padding: 80px 30px;
+  margin: 30px auto;
+}
+
+h2 {
+  font-size: 44px;
+}
+
+h3 {
+  font-size: 32px;
+}
+
+
+p,
+a,
+button {
+  font-size: 16px;
+}
+
+
+@media screen and (min-width: 415px) {
+  .section {
+    padding: 40px 30px;
+  }
+
+
+}
+
+@media only screen and (min-width: 769px) {
+  .sectionMargin {
+    padding: 96px 30px;
+    margin: 96px auto;
+  }
+
+  .section {
+    padding: 96px 30px;
+  }
+
+  h2 {
+    font-size: clamp(27px,
+        calc(27px + 25 * (100vw - 415px) / 1025),
+        60px);
+  }
+
+  h3 {
+    font-size: clamp(25px, calc(25px + 5 * (100vw - 415px) / 1025), 30px);
+  }
+
+
+  p,
+  a,
+  button {
+    font-size: clamp(16px,
+        calc(16px + 1 * ((100vw - 415px) / (1440 - 415))),
+        17px);
+  }
+}
+
+
+@media only screen and (min-width: 1034px) {
+  .sectionMargin {
+    padding: 96px 70px;
+    margin: 96px auto;
+  }
+
+  .section {
+    padding: 96px 70px;
+  }
+}
+
+@media only screen and (min-width: 1401px) {
+  .sectionMargin {
+    padding: 96px 140px;
+    margin: 96px auto;
+  }
+
+  .section {
+    padding: 96px 140px;
+  }
+}
+
+@keyframes scale-x {
+  from {
+    transform: scaleX(0);
+  }
+
+  to {
+    transform: scaleX(1);
+  }
+}
+
+.animate-scale-x {
+  animation: scale-x 1.5s ease-out forwards;
 }

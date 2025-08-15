@@ -132,9 +132,9 @@ const Hero = () => {
     }, []);
 
     return (
-        <div className="relative overflow-hidden" ref={containerRef}>
+        <div className="relative overflow-hidden" ref={containerRef} id="hero">
             {/* Background video */}
-            
+
             <video
                 ref={videoRef}
                 className="w-full h-screen object-cover will-change-transform"
@@ -162,7 +162,13 @@ const Hero = () => {
 
                     <h1
                         ref={headingRef}
-                        className="relative text-white text-7xl font-normal mb-9 max-w-[50%] leading-tight tracking-wide will-change-transform"
+                        className="
+        relative text-white 
+        text-5xl sm:text-5xl md:text-6xl lg:text-7xl 
+        font-normal mb-6 sm:mb-8 lg:mb-9 
+        max-w-[90%] sm:max-w-[70%] md:max-w-[60%] lg:max-w-[50%]
+        leading-tight tracking-wide will-change-transform
+    "
                         style={{
                             textShadow: '0 4px 20px rgba(0,0,0,0.5)',
                             fontWeight: '300',
@@ -175,11 +181,17 @@ const Hero = () => {
 
                     <p
                         ref={paragraphRef}
-                        className="relative text-white/90 text-[18px] max-w-2xl font-light mb-12 leading-relaxed will-change-transform"
+                        className="
+        relative text-white/90 
+        text-base sm:text-lg md:text-xl 
+        max-w-lg sm:max-w-xl md:max-w-2xl 
+        font-light mb-8 sm:mb-10 lg:mb-12 
+        leading-relaxed will-change-transform
+    "
                         style={{ textShadow: '0 2px 10px rgba(0,0,0,0.5)' }}
                     >
                         Discover hidden gems, explore breathtaking destinations, and book
-                        your dream trip — all in one place with Friigoo.
+                        your dream trip all in one place with Friigoo.
                     </p>
 
                     <div ref={buttonRef} className="will-change-transform">
