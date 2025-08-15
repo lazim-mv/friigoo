@@ -1,7 +1,7 @@
 import { Clock, CircleDollarSign, } from "lucide-react";
-import img1 from '../../public/cards/thai.jpg'
-import img2 from '../../public/cards/thai2.jpg'
-import img3 from '../../public/cards/newz.jpg'
+import img1 from '../../public/cards/thai.webp'
+import img2 from '../../public/cards/thai2.webp'
+import img3 from '../../public/cards/newz.webp'
 
 export const travelPackages = [
     {

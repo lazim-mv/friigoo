@@ -142,7 +142,7 @@ const Hero = () => {
                 loop
                 muted={isMuted}
             >
-                <source src="/vid/23.mp4" type="video/mp4" />
+                <source src="/vid/low.mp4" type="video/mp4" />
             </video>
 
             {/* Mute/Unmute button */}

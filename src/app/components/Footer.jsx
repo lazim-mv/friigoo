@@ -12,7 +12,7 @@ const navOptions = [
 
 const Footer = () => {
     return (
-        <footer className="bg-gray-900 text-white section"
+        <footer className="bg-gray-900 text-white section footer"
             style={{ paddingBottom: "0" }}
         >
             <div className="max-w-7xl mx-auto grid grid-cols-1 md:grid-cols-4 gap-10 mt-8 md:mt-0">
@@ -28,7 +28,7 @@ const Footer = () => {
 
                 {/* Navigation */}
                 <div>
-                    <h3 className="text-lg font-semibold mb-10">Quick Links</h3>
+                    <h3 className="text-lg font-semibold mb-6 md:mb-8 lg:mb-10">Quick Links</h3>
                     <ul className="flex flex-col gap-4 lists">
                         {navOptions.map((item, index) => (
                             <li key={index}>
@@ -49,7 +49,7 @@ const Footer = () => {
 
                 {/* Contact */}
                 <div>
-                    <h3 className="text-lg font-semibold mb-10">Contact Us</h3>
+                    <h3 className="text-lg font-semibold mb-6 md:mb-8 lg:mb-10">Contact Us</h3>
                     <div className="flex flex-col gap-4 lists">
                         <p className="text-gray-400 text-sm">
                             123 Friigoo Street,<br /> Wanderlust City, TravelLand
@@ -79,7 +79,7 @@ const Footer = () => {
 
                 {/* Social Media */}
                 <div>
-                    <h3 className="text-lg font-semibold mb-10">Follow Us</h3>
+                    <h3 className="text-lg font-semibold mb-6 md:mb-8 lg:mb-10">Follow Us</h3>
                     <div className="flex gap-4 text-gray-400 flex-col">
                         <a
                             href="https://www.linkedin.com"

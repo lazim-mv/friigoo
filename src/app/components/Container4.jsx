@@ -2,13 +2,13 @@
 import { CircleChevronLeftIcon, CircleChevronRightIcon } from 'lucide-react'
 import React, { useState, useRef, useEffect } from 'react'
 import Image from 'next/image';
-import img1 from '../../../public/container4/1.jpg'
-import img2 from '../../../public/container4/2.jpg'
-import img3 from '../../../public/container4/3.jpg'
-import img4 from '../../../public/container4/4.jpg'
-import img5 from '../../../public/container4/5.jpg'
-import img6 from '../../../public/container4/6.jpg'
-import img7 from '../../../public/container4/7.jpg'
+import img1 from '../../../public/container4/1.webp'
+import img2 from '../../../public/container4/2.webp'
+import img3 from '../../../public/container4/3.webp'
+import img4 from '../../../public/container4/4.webp'
+import img5 from '../../../public/container4/5.webp'
+import img6 from '../../../public/container4/6.webp'
+import img7 from '../../../public/container4/7.webp'
 import { useGSAP } from '@gsap/react';
 import gsap from '../utils/gsapInit';
 

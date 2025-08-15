@@ -160,6 +160,10 @@ h3 {
   font-size: 32px;
 }
 
+.footer h3 {
+  font-size: 25px;
+}
+
 
 p,
 a,
@@ -193,6 +197,10 @@ button {
   }
 
   h3 {
+    font-size: clamp(25px, calc(25px + 5 * (100vw - 415px) / 1025), 30px);
+  }
+
+  .footer h3 {
     font-size: clamp(25px, calc(25px + 5 * (100vw - 415px) / 1025), 30px);
   }
 

@@ -5,12 +5,9 @@ import React, { useRef } from 'react'
 import map from '../../../public/about/map.png'
 import CTAButton from './common/CTAButton'
 
-import siteseeing from '../../../public/about/siteseeing.jpg'
-import site from '../../../public/about/site.svg'
-import relaxSvg from '../../../public/about/relax.svg'
-import advSvg from '../../../public/about/adv.svg'
-import relax from '../../../public/about/relax.jpg'
-import adv from '../../../public/about/adv.jpg'
+import siteseeing from '../../../public/about/siteseeing.webp'
+import relax from '../../../public/about/relax.webp'
+import adv from '../../../public/about/adv.webp'
 
 // import Lottie from "lottie-react";
 // import lottie1 from "../../../public/about/lotiie1.json";
@@ -219,7 +216,6 @@ const About = () => {
                         title: "Hidden Wonders",
                         img: siteseeing,
                         alt: "guided exploration tours",
-                        svg: advSvg,
                         svgAlt: "exploration icon",
                         bg: "bg-black/5"
                     },
@@ -227,7 +223,6 @@ const About = () => {
                         title: "Epic Adventures",
                         img: adv,
                         alt: "adventure holiday packages",
-                        svg: site,
                         svgAlt: "adventure icon",
                         bg: "bg-black/10"
                     },
@@ -235,7 +230,6 @@ const About = () => {
                         title: "Unwind in Paradise",
                         img: relax,
                         alt: "luxury relaxation getaways",
-                        svg: relaxSvg,
                         svgAlt: "relaxation icon",
                         bg: "bg-black/10"
                     }
