@@ -140,7 +140,9 @@ const Hero = () => {
                 className="w-full h-screen object-cover will-change-transform"
                 autoPlay
                 loop
-                muted={isMuted}
+                muted
+                playsInline   
+                preload="auto" 
             >
                 <source src="/vid/2.mp4" type="video/mp4" />
             </video>
@@ -164,7 +166,7 @@ const Hero = () => {
                         ref={headingRef}
                         className="
         relative text-white 
-        text-5xl sm:text-5xl md:text-6xl lg:text-7xl 
+        text-[11.7vw] sm:text-5xl md:text-6xl lg:text-7xl 
         font-normal mb-6 sm:mb-8 lg:mb-9 
         max-w-[90%] sm:max-w-[70%] md:max-w-[60%] lg:max-w-[50%]
         leading-tight tracking-wide will-change-transform

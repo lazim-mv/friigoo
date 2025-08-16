@@ -61,25 +61,37 @@ const Testimonials = () => {
   useEffect(() => {
     if (isAutoPlaying) {
       intervalRef.current = setInterval(() => {
-        setCurrentIndex(prev => (prev >= maxIndex ? 0 : prev + 1));
+        setCurrentIndex(prev => {
+          const step = cardsPerView; // 1 on mobile, 2 on desktop
+          const next = prev + step;
+          return next > maxIndex ? 0 : next;
+        });
       }, 4000);
     }
     return () => {
       if (intervalRef.current) clearInterval(intervalRef.current);
     };
-  }, [isAutoPlaying, maxIndex]);
+  }, [isAutoPlaying, maxIndex, cardsPerView]);
 
   const handleMouseEnter = () => setIsAutoPlaying(false);
   const handleMouseLeave = () => setIsAutoPlaying(true);
 
   const handlePrev = () => {
-    setCurrentIndex(prev => (prev <= 0 ? maxIndex : prev - 1));
+    setCurrentIndex(prev => {
+      const step = cardsPerView;
+      const next = prev - step;
+      return next < 0 ? Math.max(0, maxIndex - (cardsPerView - 1)) : next;
+    });
     setIsAutoPlaying(false);
     setTimeout(() => setIsAutoPlaying(true), 3000);
   };
 
   const handleNext = () => {
-    setCurrentIndex(prev => (prev >= maxIndex ? 0 : prev + 1));
+    setCurrentIndex(prev => {
+      const step = cardsPerView;
+      const next = prev + step;
+      return next > maxIndex ? 0 : next;
+    });
     setIsAutoPlaying(false);
     setTimeout(() => setIsAutoPlaying(true), 3000);
   };
@@ -163,10 +175,10 @@ const Testimonials = () => {
 
         <div className='testimonials-controls flex gap-6 mx-auto pt-8 md:pt-16'>
           <button onClick={handlePrev} className='group hover:scale-90 transition-all duration-300 cursor-pointer hover:drop-shadow-2xl'>
-            <CircleChevronLeftIcon size={60} color="#99a1af" strokeWidth={0.5} className='w-[50px] h-[50px] md:w-[70px] md:h-[70px]' />
+            <CircleChevronLeftIcon color="#99a1af" strokeWidth={0.5} className='w-[50px] h-[50px] md:w-[70px] md:h-[70px]' />
           </button>
           <button onClick={handleNext} className='group hover:scale-110 transition-all duration-300 cursor-pointer hover:drop-shadow-2xl'>
-            <CircleChevronRightIcon size={60} color="#99a1af" strokeWidth={0.5} className='w-[50px] h-[50px] md:w-[70px] md:h-[70px]' />
+            <CircleChevronRightIcon color="#99a1af" strokeWidth={0.5} className='w-[50px] h-[50px] md:w-[70px] md:h-[70px]' />
           </button>
         </div>
       </div>

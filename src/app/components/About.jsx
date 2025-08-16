@@ -9,8 +9,8 @@ import siteseeing from '../../../public/about/siteseeing.webp'
 import relax from '../../../public/about/relax.webp'
 import adv from '../../../public/about/adv.webp'
 
-// import Lottie from "lottie-react";
-// import lottie1 from "../../../public/about/lotiie1.json";
+import Lottie from "lottie-react";
+import lottie1 from "../../../public/about/lotiie1.json";
 import { useGSAP } from '@gsap/react'
 import gsap from '../utils/gsapInit'
 
@@ -73,14 +73,14 @@ const About = () => {
         }, "-=0.4")
 
         // Continuous floating animation for map
-        gsap.to(mapRef.current, {
-            y: -10,
-            duration: 3,
-            ease: "power2.inOut",
-            yoyo: true,
-            repeat: -1,
-            delay: 1.5
-        })
+        // gsap.to(mapRef.current, {
+        //     y: -10,
+        //     duration: 3,
+        //     ease: "power2.inOut",
+        //     yoyo: true,
+        //     repeat: -1,
+        //     delay: 1.5
+        // })
 
         // Hover animations for cards
         const cards = document.querySelectorAll('.card-item')
@@ -183,7 +183,8 @@ const About = () => {
             <div className="flex flex-col lg:flex-row justify-between items-center gap-10 lg:gap-0">
                 {/* Map */}
                 <div ref={mapRef} className="w-full lg:w-[45%]">
-                    <Image src={map} alt="world map" className="w-full h-auto" />
+                    {/* <Image src={map} alt="world map" className="w-full h-auto" /> */}
+                    <Lottie animationData={lottie1} loop />
                 </div>
 
                 {/* Text */}
@@ -210,7 +211,7 @@ const About = () => {
             </div>
 
             {/* Cards */}
-            <div ref={cardsRef} className="pt-12 md:pt-14 lg:pt-16 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            <div ref={cardsRef} className="pt-12 md:pt-14 lg:pt-16 hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {[
                     {
                         title: "Hidden Wonders",
