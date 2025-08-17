@@ -18,7 +18,7 @@ const Banner = () => {
                     {/* <div className="absolute inset-0 bg-black/30 blur-xl scale-110 rounded-lg" /> */}
 
                     <h2 className="relative text-3xl md:text-4xl lg:text-6xl leading-tight text-white
-                                   drop-shadow-2xl 
+                                   drop-shadow-lg
                                    [text-shadow:_2px_2px_8px_rgb(0_0_0_/_80%),_0px_0px_16px_rgb(0_0_0_/_50%)]
                                    tracking-tight
                                    text-center

@@ -13,7 +13,7 @@ import lottie1 from "../../../public/about/lotiie1.json";
 import { useGSAP } from '@gsap/react'
 import gsap from '../utils/gsapInit'
 
-const About = ({ btn = true, heading, desc1, desc2 }) => {
+const About = ({ btn = true, heading, desc1, desc2, smallCards = false }) => {
     const containerRef = useRef()
     const mapRef = useRef()
     const textRef = useRef()
@@ -194,7 +194,7 @@ const About = ({ btn = true, heading, desc1, desc2 }) => {
                     <p className="w-full md:w-[90%] text-base md:text-[16px] font-light paragraph-style  leading-relaxed">
                         {desc1
                             ? desc1
-                            : "At Friigoo, we believe travel is more than moving from one place to another—it's about creating stories you'll tell for a lifetime. From hidden corners of the world to iconic landmarks, we craft every journey to match your unique style."
+                            : "At Friigoo, we believe travel is more than moving from one place to another it's about creating stories you'll tell for a lifetime. From hidden corners of the world to iconic landmarks, we craft every journey to match your unique style."
                         }
                     </p>
                     <br /><br />
@@ -219,7 +219,7 @@ const About = ({ btn = true, heading, desc1, desc2 }) => {
             </div>
 
             {/* Cards */}
-            <div ref={cardsRef} className="pt-12 md:pt-14 lg:pt-16 hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
+            {smallCards && <div ref={cardsRef} className="pt-12 md:pt-14 lg:pt-16 hidden md:grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 {[
                     {
                         title: "Hidden Wonders",
@@ -264,7 +264,7 @@ const About = ({ btn = true, heading, desc1, desc2 }) => {
                         </div>
                     </div>
                 ))}
-            </div>
+            </div>}
         </div>
     )
 }

@@ -18,6 +18,7 @@ const page = () => {
             />
             <About
                 btn={false}
+                smallCards={true}
                 heading="Built Around Travelers"
                 desc1="At Friigoo, we believe travel is not just about reaching destinations, but about creating timeless stories that stay with you forever. From breathtaking adventures and cultural explorations to peaceful escapes, we design every journey with care so you can focus on what truly matters making memories."
                 desc2="Whether you seek the thrill of adventure, the beauty of cultural discoveries, or the calm of a beachside retreat, Friigoo ensures every detail is seamless. With us, your journey becomes effortless, meaningful, and truly unforgettable."

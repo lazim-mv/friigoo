@@ -106,21 +106,23 @@ const Header = () => {
                     }
                 );
 
-                // Menu items stagger animation
+                // Menu items stagger animation - FIXED VERSION
                 gsap.fromTo(".mobile-nav-item",
                     {
-                        y: 100,
+                        // y: 100,
                         opacity: 0,
-                        // rotationX: 45
+                        // Removed any transforms that could cause stretching
                     },
                     {
-                        y: 0,
+                        // y: 0,
                         opacity: 1,
-                        // rotationX: 0,
                         duration: 0.6,
                         stagger: 0.1,
                         delay: 0.3,
-                        ease: "power2.out"
+                        ease: "power2.out",
+                        // Ensure transforms don't affect text rendering
+                        force3D: false,
+                        transformOrigin: "center center"
                     }
                 );
 
@@ -139,15 +141,16 @@ const Header = () => {
                     }
                 );
             } else {
-                // Close animation
+                // Close animation - FIXED VERSION
                 gsap.to(".mobile-nav-item",
                     {
                         y: -100,
                         opacity: 0,
-                        rotationY: -45,
+                        // Removed rotationY which can cause text distortion
                         duration: 0.3,
                         stagger: 0.05,
-                        ease: "power2.in"
+                        ease: "power2.in",
+                        force3D: false
                     }
                 );
 
@@ -262,80 +265,66 @@ const Header = () => {
             {/* Mobile Menu */}
             <div
                 ref={mobileMenuRef}
-                className="fixed inset-0 z-[100] hidden flex-col items-center justify-center bg-white"
+                className="section fixed inset-0 z-[100] hidden flex-col  items-start justify-center bg-white"
                 style={{ display: 'none' }}
             >
-
-
                 {/* Menu Content */}
-                <nav className="flex flex-col items-center gap-8 text-center lists mobileMenu">
+                <nav className="flex flex-col items-start justify-center gap-8 text-center lists mobileMenu">
                     {navOptions.map((nav, idx) => (
                         <a
                             key={idx}
                             href={nav.href}
                             onClick={() => setIsMobileMenuOpen(false)}
-                            className="mobile-nav-item text-4xl font-light 
-                            hover:text-gray-300 transition-colors duration-300 relative group"
+                            className="mobile-nav-item text-3xl md:text-4xl font-light text-black
+                hover:text-gray-600 transition-colors duration-300 relative group
+                will-change-transform"
+                            style={{
+                                // Prevent text stretching with CSS
+                                backfaceVisibility: 'hidden',
+                                WebkitBackfaceVisibility: 'hidden',
+                                transform: 'translateZ(0)',
+                                WebkitFontSmoothing: 'antialiased',
+                                MozOsxFontSmoothing: 'grayscale'
+                            }}
                         >
-                            <span className="relative z-10">{nav.label}</span>
-                            {/* <span className="absolute bottom-0 left-1/2 transform -translate-x-1/2 w-0 h-px bg-white transition-all duration-500 group-hover:w-full"></span> */}
+                            <span className="relative z-10 block">{nav.label}</span>
                         </a>
                     ))}
                 </nav>
 
-                {/* Search Button in Mobile Menu */}
-                {/* <button className="mobile-nav-item mt-8 px-8 py-4 bg-white/10 backdrop-blur-sm rounded-full border border-white/20 text-white flex items-center gap-3 hover:bg-white/20 transition-all duration-300">
-                    <Search size={20} />
-                    <span>Search</span>
-                </button> */}
-
-
-                <div className="mobile-nav-item  mt-10 px-8 py-4 bg-white/10 
-                backdrop-blur-sm rounded-full border border-black/100 text-black flex items-center gap-5 
-                hover:bg-black/20 transition-all duration-300">
+                {/* Social Links */}
+                <div className="mobile-nav-item mt-10 px-8 py-4 bg-white/10 
+    backdrop-blur-sm rounded-full border border-black/100 text-black flex items-center gap-5 
+    hover:bg-black/20 transition-all duration-300">
                     <a
-                        // ref={(el) => (socialLinksRef.current[0] = el)}
                         href="https://wa.me/1234567890"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="transition-colors duration-300"
-                        // onMouseEnter={(e) => handleSocialHover(e, "#10b981")}
-                        // onMouseLeave={handleSocialLeave}
                     >
-                        <MessageCircle className="w-6 h-6 text-black" />
+                        <MessageCircle className="w-6 h-6 text-black" strokeWidth={1.1} />
                     </a>
                     <a
-                        // ref={(el) => (socialLinksRef.current[1] = el)}
                         href="tel:+1234567890"
                         className="transition-colors duration-300"
-                        // onMouseEnter={(e) => handleSocialHover(e, "#3b82f6")}
-                        // onMouseLeave={handleSocialLeave}
                     >
-                        <Phone className="w-6 h-6 text-black" />
+                        <Phone className="w-6 h-6 text-black" strokeWidth={1.1} />
                     </a>
                     <a
-                        // ref={(el) => (socialLinksRef.current[2] = el)}
                         href="https://instagram.com/yourpage"
                         target="_blank"
                         rel="noopener noreferrer"
                         className="transition-colors duration-300"
-                        // onMouseEnter={(e) => handleSocialHover(e, "#ec4899")}
-                        // onMouseLeave={handleSocialLeave}
                     >
-                        <Instagram className="w-6 h-6 text-black" />
+                        <Instagram className="w-6 h-6 text-black" strokeWidth={1.1} />
                     </a>
                     <a
-                        // ref={(el) => (socialLinksRef.current[3] = el)}
                         href="mailto:info@friigoo.com"
                         className="transition-colors duration-300"
-                        // onMouseEnter={(e) => handleSocialHover(e, "#ef4444")}
-                        // onMouseLeave={handleSocialLeave}
                     >
-                        <Mail className="w-6 h-6 text-black" />
+                        <Mail className="w-6 h-6 text-black" strokeWidth={1.1} />
                     </a>
                 </div>
-
-
             </div>
         </>
     );

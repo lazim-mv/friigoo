@@ -95,7 +95,7 @@ const ContactForm = () => {
 
         tl.fromTo(
             socialLinksRef.current,
-            { opacity: 0, scale: 0,  },
+            { opacity: 0, scale: 0, },
             {
                 opacity: 1,
                 scale: 1,
@@ -107,15 +107,15 @@ const ContactForm = () => {
         );
     }, []);
 
-    const handleInputFocus = (e) => {
-        gsap.to(e.target, {
-            scale: 1.02,
-            boxShadow: "0 8px 25px rgba(0,0,0,0.1)",
-            borderColor: "rgb(59 130 246)",
-            duration: 0.3,
-            ease: "power2.out",
-        });
-    };
+    // const handleInputFocus = (e) => {
+    //     gsap.to(e.target, {
+    //         scale: 1.02,
+    //         boxShadow: "0 8px 25px rgba(0,0,0,0.1)",
+    //         borderColor: "var(--highlight)",
+    //         duration: 0.3,
+    //         ease: "power2.out",
+    //     });
+    // };
 
     const handleInputBlur = (e) => {
         gsap.to(e.target, {
@@ -157,7 +157,7 @@ const ContactForm = () => {
             </h2>
             <div
                 ref={containerRef}
-                className="flex flex-col md:flex-row shadow-2xl rounded-lg max-w-7xl mx-auto overflow-hidden"
+                className="flex flex-col md:flex-row shadow-lg rounded-lg max-w-7xl mx-auto overflow-hidden"
             >
                 {/* Image Section */}
                 <div className="w-full md:w-1/2 relative h-64 md:h-auto">
@@ -195,35 +195,35 @@ const ContactForm = () => {
                             ref={(el) => (inputRefs.current[0] = el)}
                             type="text"
                             placeholder="Your Name"
-                            className="w-full border border-black/20 rounded-md px-4 py-2 text-sm sm:text-base focus:outline-none transition-all duration-300"
-                            onFocus={handleInputFocus}
+                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--highlight)] focus:border-transparent outline-none transition-all duration-200"
+                            // onFocus={handleInputFocus}
                             onBlur={handleInputBlur}
                         />
                         <input
                             ref={(el) => (inputRefs.current[1] = el)}
                             type="email"
                             placeholder="Your Email"
-                            className="w-full border border-black/20 rounded-md px-4 py-2 text-sm sm:text-base focus:outline-none transition-all duration-300"
-                            onFocus={handleInputFocus}
+                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--highlight)] focus:border-transparent outline-none transition-all duration-200"
+                            // onFocus={handleInputFocus}
                             onBlur={handleInputBlur}
                         />
                         <textarea
                             ref={(el) => (inputRefs.current[2] = el)}
                             placeholder="Your Message"
                             rows={4}
-                            className="w-full border border-black/20 rounded-md px-4 py-2 text-sm sm:text-base focus:outline-none transition-all duration-300"
-                            onFocus={handleInputFocus}
+                            className="w-full px-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-[var(--highlight)] focus:border-transparent outline-none transition-all duration-200"
+                            // onFocus={handleInputFocus}
                             onBlur={handleInputBlur}
                         ></textarea>
 
                         {/* Submit Button */}
                         <div ref={buttonRef} className="mt-4">
-                            <CTAButton
-                                label="Submit"
-                                textColor="#0a0a0a"
-                                bgColor="bg-black/10"
-                                borderColor="border-black/40"
-                            />
+                            <button
+                                type="submit"
+                                className="cursor-pointer w-full bg-[var(--highlight)] text-white py-3 px-6 rounded-lg hover:opacity-80 transition-colors duration-200 font-medium text-lg"
+                            >
+                                Send Message
+                            </button>
                         </div>
 
                         {/* Contact Links */}

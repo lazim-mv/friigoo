@@ -39,7 +39,7 @@ export const whyFriigoo = [
 const Section3 = () => {
     return (
         <div className="section py-16 bg-white">
-            <div className="mb-6 md:mb-8 lg:mb-10 text-start flex flex-col md:flex-row items-center justify-between">
+            <div className="mb-6 md:mb-8 lg:mb-10 text-start flex flex-col md:flex-row items-center md:items-start justify-between">
                 <h2 className="text-3xl md:text-4xl lg:text-6xl leading-tight drop-shadow-lg mb-6 md:mb-0">
                     Why Choose Friigoo?
                 </h2>
@@ -60,7 +60,7 @@ const Section3 = () => {
                             key={i}
                             className="p-6 rounded-lg border border-black/20"
                         >
-                            <Icon className="w-12 h-12 mb-4 mx-auto" color='var(--highlight)' strokeWidth={1} />
+                            <Icon className="w-12 h-12 mb-4 mx-auto text-black"  strokeWidth={1} />
                             <h3 className="mb-2 text-center">
                                 {item.title}
                             </h3>

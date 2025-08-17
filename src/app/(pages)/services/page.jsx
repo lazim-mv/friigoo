@@ -11,7 +11,11 @@ import ContactForm from '@/app/components/common/ContactForm'
 const page = () => {
     return (
         <div>
-            <Section1 heading='Discover Friigoo Experiences' subHeading='More than just trips we create stories.' img={img1} />
+            <Section1
+                heading='Discover Friigoo Experiences'
+                subHeading='More than just trips, we craft unforgettable journeys filled with stories, connections, and lasting memories.'
+                img={img1}
+            />
             <Section2 btn={false} />
             <Section3 />
             <Banner />

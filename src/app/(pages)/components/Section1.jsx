@@ -87,14 +87,14 @@ const Section1 = ({
                 className="absolute inset-0 bg-gradient-to-b from-black/20 via-black/30 to-black/50"
             />
 
-            <div className="section flex flex-col items-center justify-center w-full relative z-10">
+            <div className="section flex flex-col items-center md:items-start justify-center w-full relative z-10">
                 <h1
                     ref={headingRef}
                     className="
                     relative text-white 
         text-[11.7vw] sm:text-5xl md:text-6xl lg:text-7xl 
-        font-normal mb-6 sm:mb-8 lg:mb-9 
-        leading-tight tracking-wide will-change-transform text-center"
+        font-normal mb-6  
+        leading-tight tracking-wide will-change-transform text-center md:text-left"
                     style={{
                         textShadow: "0 4px 20px rgba(0,0,0,0.5)",
                         fontWeight: "300",
@@ -105,7 +105,7 @@ const Section1 = ({
                     </span>
                 </h1>
 
-                <h3
+                <p
                     ref={subheadingRef}
                     className="z-10 will-change-transform text-center"
                     style={{
@@ -114,7 +114,7 @@ const Section1 = ({
                     }}
                 >
                     {subHeading}
-                </h3>
+                </p>
             </div>
         </div>
     );

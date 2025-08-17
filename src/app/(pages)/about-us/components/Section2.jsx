@@ -1,5 +1,8 @@
+"use client"
 import React from 'react'
 import { Heart, Users, Star, Rocket, Globe2, Shield } from "lucide-react"; // example icons
+import { useGSAP } from '@gsap/react';
+import gsap from '@/app/utils/gsapInit';
 
 export const aboutFriigoo = [
     {
@@ -37,6 +40,10 @@ export const aboutFriigoo = [
 
 
 const Section2 = () => {
+
+    useGSAP(() => {
+        // gsap
+    })
     return (
         <div className="section py-16 bg-white">
             <h2 className="text-3xl md:text-4xl lg:text-6xl mb-6 md:mb-8 lg:mb-10 text-center drop-shadow-lg leading-tight">
@@ -51,7 +58,7 @@ const Section2 = () => {
                             key={i}
                             className="p-6 rounded-lg border border-black/20 "
                         >
-                            <Icon className="w-12 h-12 mb-4 mx-auto" color='var(--highlight)' strokeWidth={1} />
+                            <Icon className="w-12 h-12 mb-4 mx-auto text-black"  strokeWidth={1} />
                             <h3 className="mb-2 text-center font-medium">
                                 {item.title}
                             </h3>
