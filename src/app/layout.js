@@ -2,6 +2,7 @@ import { Cormorant_Garamond, Poppins } from "next/font/google";
 import "./globals.css";
 import SmoothScrolling from "./utils/SmoothScrolling";
 import Header from "./components/Header";
+import Footer from "./components/Footer";
 
 // Cormorant Garamond (for headings)
 const cormorantGaramond = Cormorant_Garamond({
@@ -15,7 +16,7 @@ const cormorantGaramond = Cormorant_Garamond({
 const poppins = Poppins({
   variable: "--font-poppins",
   subsets: ["latin"],
-  weight: ["200","300","400", "500", "600", "700"],
+  weight: ["200", "300", "400", "500", "600", "700"],
   display: "swap",
 });
 
@@ -30,8 +31,13 @@ export default function RootLayout({ children }) {
       <body
         className={`${cormorantGaramond.variable} ${poppins.variable} antialiased`}
       >
-        <Header />
-        <SmoothScrolling>{children}</SmoothScrolling>
+        <SmoothScrolling>
+          <Header />
+          <div className="min-h-screen">
+            {children}
+          </div>
+          <Footer />
+        </SmoothScrolling>
       </body>
     </html>
   );

@@ -101,6 +101,11 @@ span {
   /* letter-spacing: .2rem; */
 }
 
+.mobileMenu a{
+  font-size: 8vw;
+  font-weight: 300;
+}
+
 .lists a:hover {
   transform: translateY(-1px);
 }
@@ -122,15 +127,6 @@ span {
   transform: scaleX(0);
   transform-origin: right;
   transition: transform 0.75s cubic-bezier(0.19, 1, 0.22, 1);
-}
-
-
-.paragraph-style {
-  font-family: Gt, sans-serif;
-  font-weight: 300;
-  /* color: #000; */
-  color: var(--text-secondary);
-  line-height: 1.66;
 }
 
 .light-header .nav-link {
@@ -160,7 +156,7 @@ h2 {
 
 h3 {
   font-size: 32px;
-  font-size: 8.5vw;
+  font-size: 8vw;
 }
 
 .footer h3 {
@@ -173,6 +169,7 @@ a,
 button {
   font-size: 16px;
 }
+
 
 
 @media screen and (min-width: 415px) {
@@ -253,3 +250,5 @@ button {
 .animate-scale-x {
   animation: scale-x 1.5s ease-out forwards;
 }
+
+

@@ -44,7 +44,7 @@ const PackageCard = ({ travelPackages }) => {
                         <hr className="mb-5 w-full bg-black/20" />
 
                         {/* Description */}
-                        <p>{pkg.description}</p>
+                        <p className='font-light'>{pkg.description}</p>
 
                         <hr className="my-5 w-full bg-black/20" />
 

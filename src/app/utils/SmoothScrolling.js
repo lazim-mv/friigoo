@@ -10,7 +10,7 @@ export default function SmoothScrolling({ children }) {
   const pathname = usePathname();
   const lenisRef = useRef(null);
   const [isReady, setIsReady] = useState(false);
-  const [loadingProgress, setLoadingProgress] = useState(0);
+  ;
 
   useEffect(() => {
     const root = document.documentElement
@@ -38,8 +38,7 @@ export default function SmoothScrolling({ children }) {
         });
 
         lenisRef.current = lenis;
-        // Random progress between 1-25
-        setLoadingProgress(Math.floor(Math.random() * 25) + 1); // 1 to 25
+
 
         // Small delay to show progress
         await new Promise(resolve => setTimeout(resolve, 100));
@@ -56,9 +55,6 @@ export default function SmoothScrolling({ children }) {
           lenis.raf(performance.now());
         });
 
-        // Random progress between 25-50
-        setLoadingProgress(Math.floor(Math.random() * 26) + 25); // 25 to 50
-        await new Promise(resolve => setTimeout(resolve, 100));
 
         // Step 3: Setup ScrollTrigger
         ScrollTrigger.defaults({ scroller: lenis.wrapper });
@@ -81,13 +77,7 @@ export default function SmoothScrolling({ children }) {
         ScrollTrigger.addEventListener("refresh", () => { });
         ScrollTrigger.refresh();
 
-        // Random progress between 50-90
-        setLoadingProgress(Math.floor(Math.random() * 18) + 80); // 50 to 90
-        await new Promise(resolve => setTimeout(resolve, 100));
 
-        // Step 4: Finalization
-        isReady && setLoadingProgress(100); // Always 100 at the end
-        await new Promise(resolve => setTimeout(resolve, 400)); // Let user see 100%
 
         setIsReady(true);
 
@@ -112,7 +102,7 @@ export default function SmoothScrolling({ children }) {
 
       {/* <LoadingScreen isReady={isReady} loadingProgress={loadingProgress} /> */}
 
-      {children}
+      {isReady && children}
     </>
   );
 }

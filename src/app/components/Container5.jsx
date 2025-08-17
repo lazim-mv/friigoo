@@ -1,7 +1,7 @@
 "use client"
 import Image from 'next/image'
 import React, { useRef, useEffect, useState } from 'react'
-import img1 from '../../../public/container5/1.webp'
+import img1 from '../../../public/trek/4.jpg'
 import CTAButton from './common/CTAButton'
 import { CheckCircleIcon } from 'lucide-react'
 import { useGSAP } from '@gsap/react'
@@ -12,7 +12,7 @@ const Container5 = () => {
     const img1Ref = useRef(null);
     const contentRef = useRef(null);
     const checkItemsRef = useRef([]);
-   
+
 
     const servicePoints = [
         "Connect with Nature",
@@ -175,7 +175,7 @@ const Container5 = () => {
 
             {/* Content Section */}
             <div ref={contentRef} className='flex flex-col w-full md:w-[50%]'>
-                <h2 className='content-title text-6xl mb-6 md:mb-8 lg:mb-10 w-full md:w-[80%]'>
+                <h2 className='content-title text-6xl mb-6 md:mb-8 lg:mb-10 w-full md:w-[80%] drop-shadow-lg'>
                     Your Journey, <br />
                     <span className='relative'>
                         Perfectly Planned
@@ -207,14 +207,16 @@ const Container5 = () => {
                                 />
                                 <div className='absolute inset-0 bg-green-400/20 rounded-full scale-0 group-hover:scale-150 transition-transform duration-500 blur-sm' />
                             </div>
-                            <span className='group-hover:text-gray-900 transition-colors duration-300'>
+                            <span
+                                style={{ fontFamily: "var(--font-poppins)" }}
+                                className='group-hover:text-gray-900 font-light text-[#09090b] transition-colors duration-300 whitespace-nowrap'>
                                 {point}
                             </span>
                         </li>
                     ))}
                 </ul>
 
-                <div className='cta-container w-[45%] relative overflow-hidden'>
+                <div className='cta-container w-max relative overflow-hidden'>
                     {/* <div className='absolute inset-0 bg-gradient-to-r from-blue-400/10 to-purple-400/10 rounded-full scale-0 hover:scale-100 transition-transform duration-700 blur-xl' /> */}
                     <CTAButton
                         label='Know More'

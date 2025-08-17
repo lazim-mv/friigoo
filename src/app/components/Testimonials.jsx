@@ -136,7 +136,7 @@ const Testimonials = () => {
 
       <div className='top-24 w-full flex flex-col items-center'>
         <h2 className='testimonials-header text-6xl mb-10 text-white drop-shadow-lg text-center'>What Our Clients Say</h2>
-        <p className='testimonials-description w-full md:w-[40%] text-[17px] font-light text-center paragraph-style leading-relaxed text-white/90 drop-shadow-md'>
+        <p className='testimonials-description w-full md:w-[40%] text-[17px] font-light text-center paragraph-style leading-relaxed text-[#09090b] drop-shadow-md'>
           Our customer's feedback is essential in building a great reputation and maintaining excellent service.
         </p>
 
@@ -156,7 +156,7 @@ const Testimonials = () => {
                     ref={el => cardsRef.current[idx] = el}
                     className='bg-white/10 backdrop-blur-md rounded-lg w-full md:w-[500px] flex-shrink-0 hover:bg-white/20 transition-all duration-500 border border-white/20 p-6 shadow-2xl hover:shadow-3xl hover:scale-105 hover:-translate-y-2 group'
                   >
-                    <p className='text-[17px] font-light text-white/90 paragraph-style mb-8 leading-relaxed relative z-10'>{testi.description}</p>
+                    <p className='text-[17px] font-light text-[#09090b] paragraph-style mb-8 leading-relaxed relative z-10'>{testi.description}</p>
                     <div className='flex gap-4 items-center'>
                       <div className='w-14 h-14 rounded-full overflow-hidden ring-2 ring-white/30 group-hover:ring-white/60 transition-all duration-300'>
                         <Image className='w-full h-full object-cover' src={testi.img} width={56} height={56} alt={`Testimonial by ${testi.name}`} />
@@ -175,10 +175,10 @@ const Testimonials = () => {
 
         <div className='testimonials-controls flex gap-6 mx-auto pt-8 md:pt-16'>
           <button onClick={handlePrev} className='group hover:scale-90 transition-all duration-300 cursor-pointer hover:drop-shadow-2xl'>
-            <CircleChevronLeftIcon color="#99a1af" strokeWidth={0.5} className='w-[50px] h-[50px] md:w-[70px] md:h-[70px]' />
+            <CircleChevronLeftIcon  strokeWidth={0.5} className='w-[50px] h-[50px] md:w-[70px] md:h-[70px] text-white/50 md:text-black/20' />
           </button>
-          <button onClick={handleNext} className='group hover:scale-110 transition-all duration-300 cursor-pointer hover:drop-shadow-2xl'>
-            <CircleChevronRightIcon color="#99a1af" strokeWidth={0.5} className='w-[50px] h-[50px] md:w-[70px] md:h-[70px]' />
+          <button onClick={handleNext} className='group hover:scale-90 transition-all duration-300 cursor-pointer hover:drop-shadow-2xl'>
+            <CircleChevronRightIcon  strokeWidth={0.5} className='w-[50px] h-[50px] md:w-[70px] md:h-[70px] text-white/50 md:text-black/20' />
           </button>
         </div>
       </div>

@@ -258,7 +258,7 @@ const Container4 = () => {
             >
                 <h2
                     ref={titleRef}
-                    className='text-6xl mb-6 md:mb-8 lg:mb-10 w-full md:w-[40%]'
+                    className='text-6xl mb-6 md:mb-8 lg:mb-10 w-full md:w-[40%] drop-shadow-lg'
                 >
                     Discover Our Top Destinations
                 </h2>

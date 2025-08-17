@@ -2,7 +2,6 @@
 
 import Image from 'next/image'
 import React, { useRef } from 'react'
-import map from '../../../public/about/map.png'
 import CTAButton from './common/CTAButton'
 
 import siteseeing from '../../../public/about/siteseeing.webp'
@@ -14,7 +13,7 @@ import lottie1 from "../../../public/about/lotiie1.json";
 import { useGSAP } from '@gsap/react'
 import gsap from '../utils/gsapInit'
 
-const About = () => {
+const About = ({ btn = true, heading, desc1, desc2 }) => {
     const containerRef = useRef()
     const mapRef = useRef()
     const textRef = useRef()
@@ -189,24 +188,33 @@ const About = () => {
 
                 {/* Text */}
                 <div ref={textRef} className="flex flex-col items-start justify-center h-full w-full lg:w-[45%]">
-                    <h2 className="text-3xl md:text-4xl lg:text-6xl mb-6 md:mb-8 lg:mb-10 leading-tight">
+                    <h2 className="text-3xl md:text-4xl lg:text-6xl mb-6 md:mb-8 lg:mb-10 leading-tight drop-shadow-lg">
                         Magical Memories,<br />Bespoke Experiences
                     </h2>
-                    <p className="w-full md:w-[90%] text-base lg:text[17px] md:text-[16px] font-light paragraph-style mb-6 md:mb-8 leading-relaxed">
-                        At Friigoo, we believe travel is more than moving from one place to another it's about creating stories you'll
-                        tell for a lifetime. From hidden corners of the world to iconic landmarks, we craft every journey to match your
-                        unique style.
-                        <br /><br />
-                        Whether you crave the thrill of adventure, the charm of cultural discoveries, or the serenity of a beachside escape,
-                        our team ensures every detail is seamless so you can focus on what truly matters — making memories.
+                    <p className="w-full md:w-[90%] text-base md:text-[16px] font-light paragraph-style  leading-relaxed">
+                        {desc1
+                            ? desc1
+                            : "At Friigoo, we believe travel is more than moving from one place to another—it's about creating stories you'll tell for a lifetime. From hidden corners of the world to iconic landmarks, we craft every journey to match your unique style."
+                        }
+                    </p>
+                    <br /><br />
+                    <p className="w-full md:w-[90%] text-base md:text-[16px] font-light paragraph-style mb-6 md:mb-8 leading-relaxed">
+                        {desc2
+                            ? desc2
+                            : "Whether you crave the thrill of adventure, the charm of cultural discoveries, or the serenity of a beachside escape, our team ensures every detail is seamless so you can focus on what truly matters—making memories."
+                        }
                     </p>
 
-                    <CTAButton
-                        label="Know More"
-                        textColor="#0a0a0a"
-                        bgColor="bg-black/10"
-                        borderColor="border-black/10"
-                    />
+                    {btn &&
+                        <div className='w-max'>
+                            <CTAButton
+                                label="Know More"
+                                textColor="#0a0a0a"
+                                bgColor="bg-black/10"
+                                borderColor="border-black/10"
+                            />
+                        </div>
+                    }
                 </div>
             </div>
 
