@@ -90,12 +90,12 @@ const ContactPage = () => {
             <div className="max-w-7xl mx-auto">
                 {/* Header */}
                 <div className="text-center mb-16">
-                    <h1
+                    <h2
                         ref={headingRef}
                         className="text-4xl md:text-5xl lg:text-6xl font-light text-gray-800 mb-6"
                     >
                         Get in touch
-                    </h1>
+                    </h2>
                     <p
                         ref={subtitleRef}
                         className="text-gray-600 text-lg max-w-2xl mx-auto"
