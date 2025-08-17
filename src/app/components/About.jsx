@@ -212,6 +212,7 @@ const About = ({ btn = true, heading, desc1, desc2, smallCards = false }) => {
                                 textColor="#0a0a0a"
                                 bgColor="bg-black/10"
                                 borderColor="border-black/10"
+                                route="/about-us"
                             />
                         </div>
                     }

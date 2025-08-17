@@ -185,7 +185,7 @@ const ContactForm = () => {
                         </h3>
                         <p
                             ref={formDescRef}
-                            className="text-sm sm:text-base text-center mb-6 md:mb-8"
+                            className="w-full md:w-[90%] text-base md:text-[16px] font-light paragraph-style  leading-relaxed text-center mb-6 md:mb-8"
                         >
                             Write to us for personalized travel advice or for information on
                             group travel and last minute travel, all travel is insured and

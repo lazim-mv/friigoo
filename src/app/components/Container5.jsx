@@ -224,6 +224,7 @@ const Container5 = () => {
                         bgColor='bg-black/10'
                         borderColor='border-black/10'
                         className='relative z-10 hover:bg-black/20 hover:scale-105 hover:shadow-lg transition-all duration-500'
+                        route="/services"
                     />
                 </div>
             </div>

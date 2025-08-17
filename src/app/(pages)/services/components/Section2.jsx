@@ -242,16 +242,7 @@ const Section2 = ({ btn = true }) => {
                     ))}
                 </ul>
 
-                {btn && <div className='cta-container w-max relative overflow-hidden'>
-                    {/* <div className='absolute inset-0 bg-gradient-to-r from-blue-400/10 to-purple-400/10 rounded-full scale-0 hover:scale-100 transition-transform duration-700 blur-xl' /> */}
-                    <CTAButton
-                        label='Know More'
-                        textColor='#0a0a0a'
-                        bgColor='bg-black/10'
-                        borderColor='border-black/10'
-                        className='relative z-10 hover:bg-black/20 hover:scale-105 hover:shadow-lg transition-all duration-500'
-                    />
-                </div>}
+               
             </div>
 
 
