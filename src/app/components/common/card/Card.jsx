@@ -1,70 +1,175 @@
-import React from 'react'
+"use client"
+import React, { useRef } from 'react'
 import { MapPin, MessageCircle, PhoneCall } from "lucide-react";
 import Image from 'next/image';
 import CTAButton from '../CTAButton';
+import { useGSAP } from '@gsap/react';
+import gsap from '@/app/utils/gsapInit';
 
 const PackageCard = ({ travelPackages }) => {
+    const containerRef = useRef(null);
+
     if (!travelPackages || travelPackages.length === 0) return null;
 
+    useGSAP(() => {
+        const cards = gsap.utils.toArray('.package-card');
+        
+        // Initial state - cards invisible and slightly down
+        gsap.set(cards, {
+            opacity: 0,
+            y: 30,
+            scale: 0.95
+        });
+
+        // Stagger animation for cards entrance
+        gsap.to(cards, {
+            opacity: 1,
+            y: 0,
+            scale: 1,
+            duration: 0.8,
+            ease: "power2.out",
+            stagger: 0.1
+        });
+
+        // Hover animations for each card
+        cards.forEach((card) => {
+            const image = card.querySelector('.card-image');
+            const content = card.querySelector('.card-content');
+            const buttons = card.querySelectorAll('.action-btn');
+
+            // Card hover effect
+            card.addEventListener('mouseenter', () => {
+                gsap.to(card, {
+                    y: -8,
+                    scale: 1.02,
+                    duration: 0.4,
+                    ease: "power2.out"
+                });
+                
+                gsap.to(image, {
+                    scale: 1.05,
+                    duration: 0.6,
+                    ease: "power2.out"
+                });
+
+                // Subtle content lift
+                gsap.to(content, {
+                    y: -4,
+                    duration: 0.4,
+                    ease: "power2.out"
+                });
+
+              
+            });
+
+            card.addEventListener('mouseleave', () => {
+                gsap.to(card, {
+                    y: 0,
+                    scale: 1,
+                    duration: 0.4,
+                    ease: "power2.out"
+                });
+                
+                gsap.to(image, {
+                    scale: 1,
+                    duration: 0.6,
+                    ease: "power2.out"
+                });
+
+                gsap.to(content, {
+                    y: 0,
+                    duration: 0.4,
+                    ease: "power2.out"
+                });
+
+              
+            });
+
+            // Individual button hover effects
+            buttons.forEach(button => {
+                button.addEventListener('mouseenter', () => {
+                    gsap.to(button, {
+                        scale: 1.1,
+                        duration: 0.2,
+                        ease: "power2.out"
+                    });
+                });
+
+                button.addEventListener('mouseleave', () => {
+                    gsap.to(button, {
+                        scale: 1,
+                        duration: 0.2,
+                        ease: "power2.out"
+                    });
+                });
+            });
+        });
+
+    }, { scope: containerRef });
+
     return (
-        <div className="section md:grid flex flex-col grid-cols-3 gap-8 md:gap-6">
+        <div ref={containerRef} className="section md:grid flex flex-col grid-cols-3 gap-8 md:gap-6">
             {travelPackages.map((pkg, idx) => (
                 <div
                     key={idx}
-                    className="flex flex-col items-center w-full h-fit rounded-lg shadow-2xl overflow-hidden"
+                    className="package-card flex flex-col items-center w-full h-fit rounded-lg shadow-2xl overflow-hidden cursor-pointer"
                 >
                     {/* Image */}
-                    <div className="w-full">
+                    <div className="w-full overflow-hidden">
                         <Image
                             src={pkg.img}
                             alt={`${pkg.country} package`}
-                            className="aspect-[4/3] w-full object-cover"
+                            className="card-image aspect-[4/3] w-full object-cover transition-transform duration-300"
                             width={500}
-                            height={300} // keep this proportional for Next.js optimization
+                            height={300}
                         />
                     </div>
 
                     {/* Info */}
-                    <div className="w-full flex flex-col items-start px-4">
-                        <h3 className="flex gap-2 items-center text-3xl font-medium mt-10 mb-5">
-                            <MapPin />
+                    <div className="card-content w-full flex flex-col items-start px-4">
+                        <h3 className="flex gap-2 items-center text-3xl font-medium mt-10 mb-5 transition-colors duration-300 hover:text-blue-600">
+                            <MapPin className="transition-transform duration-300 hover:scale-110" />
                             {pkg.country}
                         </h3>
 
                         {/* Icons */}
                         <div className="flex items-center gap-10 w-full mb-5">
                             {pkg.icons.map((icon, index) => (
-                                <div key={index} className="flex items-center gap-3">
-                                    {icon.icon}
-                                    <p>{icon.label}</p>
+                                <div key={index} className="icon-item flex items-center gap-3 transition-all duration-300">
+                                    <span className="transition-transform duration-300">
+                                        {icon.icon}
+                                    </span>
+                                    <p className="transition-colors duration-300">{icon.label}</p>
                                 </div>
                             ))}
                         </div>
 
-                        <hr className="mb-5 w-full bg-black/20" />
+                        <hr className="mb-5 w-full bg-black/20 transition-all duration-300" />
 
                         {/* Description */}
-                        <p className='font-light'>{pkg.description}</p>
+                        <p className='font-light transition-colors duration-300 hover:text-gray-700'>{pkg.description}</p>
 
-                        <hr className="my-5 w-full bg-black/20" />
+                        <hr className="my-5 w-full bg-black/20 transition-all duration-300" />
 
                         {/* Actions */}
                         <div className="mb-5 flex justify-between w-full gap-2 flex-wrap">
                             <div className="flex gap-5 md:gap-2 lg:gap-2">
                                 <button
-                                    className="cursor-pointer p-3 bg-transparent backdrop-blur-sm rounded-lg
-                                        hover:bg-black/20 transition-all duration-300 border border-black/20"
+                                    className="action-btn cursor-pointer p-3 bg-transparent backdrop-blur-sm rounded-lg
+                                        hover:bg-black/20 transition-all duration-300 border border-black/20
+                                        hover:shadow-lg transform hover:-translate-y-1"
                                 >
-                                    <MessageCircle size={20} color="black" />
+                                    <MessageCircle size={20} color="black" className="transition-colors duration-300 hover:text-blue-600" />
                                 </button>
                                 <button
-                                    className="cursor-pointer p-3 bg-transparent backdrop-blur-sm rounded-lg
-                                        hover:bg-black/20 transition-all duration-300 border border-black/20"
+                                    className="action-btn cursor-pointer p-3 bg-transparent backdrop-blur-sm rounded-lg
+                                        hover:bg-black/20 transition-all duration-300 border border-black/20
+                                        hover:shadow-lg transform hover:-translate-y-1"
                                 >
-                                    <PhoneCall size={20} color="black" />
+                                    <PhoneCall size={20} color="black" className="transition-colors duration-300 hover:text-green-600" />
                                 </button>
                             </div>
-                            <div className=''>
+                            <div className='action-btn'>
                                 <CTAButton
                                     label="Book Now"
                                     textColor="#0a0a0a"

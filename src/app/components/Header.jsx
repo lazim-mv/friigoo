@@ -16,6 +16,7 @@ const Header = () => {
 
     const navOptions = [
         { label: "Home", href: "/" },
+        { label: "Packages", href: "/packages" },
         { label: "About Us", href: "/about-us" },
         { label: "Services", href: "/services" },
         { label: "Contact Us", href: "/contact-us" },

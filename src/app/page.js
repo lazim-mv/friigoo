@@ -7,15 +7,17 @@ import Container4 from "./components/Container4";
 import Container5 from "./components/Container5";
 import Testimonials from "./components/Testimonials";
 import ContactForm from "./components/common/ContactForm";
+import Banner from "./(pages)/about-us/components/Banner";
 
 export default function Home() {
   return (
     <div className="">
       <Hero />
       <About />
-      <PackageCard travelPackages={travelPackages} />
+      <PackageCard travelPackages={travelPackages.splice(0, 3)} />
       <Container4 />
       <Container5 />
+      <Banner />
       <ContactForm />
       <Testimonials />
 
