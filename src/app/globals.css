@@ -85,6 +85,53 @@ span {
   font-family: inherit;
 }
 
+/* Header scroll animations */
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-100%);
+  }
+
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+header {
+  transition: all 0.3s ease-out;
+  animation: fadeIn 1s cubic-bezier(0.4, 0, 0.2, 1);
+}
+
+header.scrolled {
+  background-color: rgba(255, 255, 255, 1);
+  backdrop-filter: blur(12px);
+  -webkit-backdrop-filter: blur(12px);
+  box-shadow: 0 10px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+}
+
+header.hidden {
+  transform: translateY(-100%);
+}
+
+/* Optional: Add smooth color transitions for logo and nav elements when scrolled */
+header.scrolled .nav-item {
+  color: black;
+}
+
+header:not(.scrolled) .nav-item {
+  color: white;
+}
+
+header.scrolled .nav-item .hover-line {
+  background-color: black;
+}
+
+header:not(.scrolled) .nav-item .hover-line {
+  background-color: white;
+}
+
 
 
 .letter-spacing-link {
@@ -101,7 +148,7 @@ span {
   /* letter-spacing: .2rem; */
 }
 
-.mobileMenu a{
+.mobileMenu a {
   font-size: 8vw;
   font-size: 25px;
   font-weight: 300;
@@ -139,9 +186,15 @@ span {
   border-color: rgba(0, 0, 0, 0.1) !important;
 }
 
+
+
 .section {
   padding: 40px 30px;
   /* default mobile padding */
+}
+
+.mobileOnlyNoHorizontalPaddingSection {
+    padding: 40px 0px;
 }
 
 .sectionMargin {
@@ -253,3 +306,6 @@ button {
 }
 
 
+.logo-svg .logo-text {
+  font-family: var(--font-bauhaus);
+}

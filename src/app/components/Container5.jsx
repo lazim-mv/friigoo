@@ -158,7 +158,7 @@ const Container5 = () => {
             {/* Image Section with Enhanced Styling */}
             <div className="relative  h-auto w-full md:w-[50%]">
                 <div
-                    className="relative w-full h-[400px] md:h-full rounded-lg overflow-hidden"
+                    className="relative w-full h-[400px] md:h-full rounded-xl overflow-hidden"
                     onMouseEnter={() => handleImageHover(img1Ref, true)}
                     onMouseLeave={() => handleImageHover(img1Ref, false)}
                 >

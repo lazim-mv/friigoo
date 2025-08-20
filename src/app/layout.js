@@ -1,4 +1,5 @@
 import { Cormorant_Garamond, Poppins } from "next/font/google";
+import localFont from "next/font/local";
 import "./globals.css";
 import SmoothScrolling from "./utils/SmoothScrolling";
 import Header from "./components/Header";
@@ -9,6 +10,38 @@ const cormorantGaramond = Cormorant_Garamond({
   variable: "--font-cormorant",
   subsets: ["latin"],
   weight: ["400", "500", "600", "700"],
+  display: "swap",
+});
+
+const bauhaus = localFont({
+  src: [
+    {
+      path: "./bauhaus-font/BauhausStd-Light.woff2",
+      weight: "300",
+      style: "normal",
+    },
+    {
+      path: "./bauhaus-font/BauhausStd-Medium.woff2",
+      weight: "500",
+      style: "normal",
+    },
+    {
+      path: "./bauhaus-font/BauhausStd-Demi.woff2",
+      weight: "600",
+      style: "normal",
+    },
+    {
+      path: "./bauhaus-font/BauhausStd-Bold.woff2",
+      weight: "700",
+      style: "normal",
+    },
+    {
+      path: "./bauhaus-font/BauhausStd-Heavy.woff2",
+      weight: "900",
+      style: "normal",
+    },
+  ],
+  variable: "--font-bauhaus",
   display: "swap",
 });
 
@@ -29,7 +62,7 @@ export default function RootLayout({ children }) {
   return (
     <html lang="en">
       <body
-        className={`${cormorantGaramond.variable} ${poppins.variable} antialiased`}
+        className={`${cormorantGaramond.variable} ${poppins.variable} ${bauhaus.variable} antialiased`}
       >
         <SmoothScrolling>
           <Header />

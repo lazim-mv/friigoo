@@ -191,14 +191,14 @@ const About = ({ btn = true, heading, desc1, desc2, smallCards = false }) => {
                     <h2 className="text-3xl md:text-4xl lg:text-6xl mb-6 md:mb-8 lg:mb-10 leading-tight drop-shadow-lg">
                         Magical Memories,<br />Bespoke Experiences
                     </h2>
-                    <p className="w-full md:w-[90%] text-base md:text-[16px] font-light paragraph-style  leading-relaxed">
+                    <p className="w-full md:w-[90%] text-base md:text-[16px] font-light  leading-relaxed">
                         {desc1
                             ? desc1
                             : "At Friigoo, we believe travel is more than moving from one place to another it's about creating stories you'll tell for a lifetime. From hidden corners of the world to iconic landmarks, we craft every journey to match your unique style."
                         }
                     </p>
                     <br /><br />
-                    <p className="w-full md:w-[90%] text-base md:text-[16px] font-light paragraph-style mb-6 md:mb-8 leading-relaxed">
+                    <p className="w-full md:w-[90%] text-base md:text-[16px] font-light mb-6 md:mb-8 leading-relaxed">
                         {desc2
                             ? desc2
                             : "Whether you crave the thrill of adventure, the charm of cultural discoveries, or the serenity of a beachside escape, our team ensures every detail is seamless so you can focus on what truly matters—making memories."

@@ -1,19 +1,21 @@
 "use client"
-import React, { useRef } from 'react'
+import React, { use, useRef } from 'react'
 import { MapPin, MessageCircle, PhoneCall } from "lucide-react";
 import Image from 'next/image';
 import CTAButton from '../CTAButton';
 import { useGSAP } from '@gsap/react';
 import gsap from '@/app/utils/gsapInit';
+import { useRouter } from 'next/navigation';
 
 const PackageCard = ({ travelPackages }) => {
+    const router = useRouter();
     const containerRef = useRef(null);
 
     if (!travelPackages || travelPackages.length === 0) return null;
 
     useGSAP(() => {
         const cards = gsap.utils.toArray('.package-card');
-        
+
         // Initial state - cards invisible and slightly down
         gsap.set(cards, {
             opacity: 0,
@@ -45,7 +47,7 @@ const PackageCard = ({ travelPackages }) => {
                     duration: 0.4,
                     ease: "power2.out"
                 });
-                
+
                 gsap.to(image, {
                     scale: 1.05,
                     duration: 0.6,
@@ -59,7 +61,7 @@ const PackageCard = ({ travelPackages }) => {
                     ease: "power2.out"
                 });
 
-              
+
             });
 
             card.addEventListener('mouseleave', () => {
@@ -69,7 +71,7 @@ const PackageCard = ({ travelPackages }) => {
                     duration: 0.4,
                     ease: "power2.out"
                 });
-                
+
                 gsap.to(image, {
                     scale: 1,
                     duration: 0.6,
@@ -82,7 +84,7 @@ const PackageCard = ({ travelPackages }) => {
                     ease: "power2.out"
                 });
 
-              
+
             });
 
             // Individual button hover effects
@@ -107,12 +109,16 @@ const PackageCard = ({ travelPackages }) => {
 
     }, { scope: containerRef });
 
+    const handleClick = () => {
+        router.push("packages/1");
+    }
+
     return (
-        <div ref={containerRef} className="section md:grid flex flex-col grid-cols-3 gap-8 md:gap-6">
+        <div ref={containerRef} className="section md:grid flex flex-col grid-cols-3 gap-8 md:gap-6" onClick={handleClick}>
             {travelPackages.map((pkg, idx) => (
                 <div
                     key={idx}
-                    className="package-card flex flex-col items-center w-full h-fit rounded-lg shadow-2xl overflow-hidden cursor-pointer"
+                    className="package-card flex flex-col items-center w-full h-fit rounded-xl shadow-2xl overflow-hidden cursor-pointer"
                 >
                     {/* Image */}
                     <div className="w-full overflow-hidden">
@@ -156,14 +162,14 @@ const PackageCard = ({ travelPackages }) => {
                             <div className="flex gap-5 md:gap-2 lg:gap-2">
                                 <button
                                     className="action-btn cursor-pointer p-3 bg-transparent backdrop-blur-sm rounded-lg
-                                        hover:bg-black/20 transition-all duration-300 border border-black/20
+                                        hover:bg-black/20 transition-all duration-300 border border-[#d3d3d3]
                                         hover:shadow-lg transform hover:-translate-y-1"
                                 >
                                     <MessageCircle size={20} color="black" className="transition-colors duration-300 hover:text-blue-600" />
                                 </button>
                                 <button
                                     className="action-btn cursor-pointer p-3 bg-transparent backdrop-blur-sm rounded-lg
-                                        hover:bg-black/20 transition-all duration-300 border border-black/20
+                                        hover:bg-black/20 transition-all duration-300 border border-[#d3d3d3]
                                         hover:shadow-lg transform hover:-translate-y-1"
                                 >
                                     <PhoneCall size={20} color="black" className="transition-colors duration-300 hover:text-green-600" />

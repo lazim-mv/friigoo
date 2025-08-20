@@ -1,0 +1,12 @@
+<text
+  x="0"
+  y="200"
+  font-family="var(--font-bauhaus)"
+  font-size="100"
+  fill="#000"
+>
+  Fr
+  <tspan dx="20">i</tspan> <!-- adds spacing like padding-left -->
+  <tspan dx="40">i</tspan>
+  Goo
+</text>

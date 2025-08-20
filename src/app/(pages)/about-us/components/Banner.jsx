@@ -1,9 +1,10 @@
 import React from 'react'
 import img1 from '../../../../../public/trek/5.jpg'
+import img2 from '../../../../../public/trek/1.webp'
 import Image from 'next/image'
 import CTAButton from '@/app/components/common/CTAButton'
 
-const Banner = () => {
+const Banner = ({ img }) => {
     return (
         <div className='sectionMargin relative h-max md:h-[60vh] w-full'>
             {/* Stronger overlay for better contrast */}
@@ -37,7 +38,7 @@ const Banner = () => {
                     <CTAButton
                         label="Explore Destinations"
                         textColor="#0a0a0a"
-                        bgColor="bg-white/10"
+                        // bgColor="bg-white/10"
                         borderColor="border-white/10"
                     />
                 </div>

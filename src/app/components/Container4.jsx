@@ -48,18 +48,24 @@ const Container4 = () => {
     const [isAutoPlaying, setIsAutoPlaying] = useState(true);
     const [itemsPerView, setItemsPerView] = useState(3);
     const [isMobile, setIsMobile] = useState(false);
+    
+    // Drag/swipe state
+    const [isDragging, setIsDragging] = useState(false);
+    const [startX, setStartX] = useState(0);
+    const [currentX, setCurrentX] = useState(0);
+    const [dragOffset, setDragOffset] = useState(0);
 
     useEffect(() => {
         const updateItemsPerView = () => {
-            setItemsPerView(window.innerWidth < 768 ? 1 : 3); // 1 card on mobile, 3 on desktop
+            const isMobileView = window.innerWidth < 768;
+            setItemsPerView(isMobileView ? 1 : 3);
+            setIsMobile(isMobileView);
         };
 
         updateItemsPerView();
         window.addEventListener("resize", updateItemsPerView);
         return () => window.removeEventListener("resize", updateItemsPerView);
     }, []);
-
-
 
     const maxIndex = Math.max(0, countries.length - itemsPerView);
 
@@ -74,10 +80,10 @@ const Container4 = () => {
 
     // Auto-play functionality
     useEffect(() => {
-        if (isAutoPlaying) {
+        if (isAutoPlaying && !isDragging) {
             autoPlayRef.current = setInterval(() => {
                 setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
-            }, 4000); // 4 second interval
+            }, 4000);
         }
 
         return () => {
@@ -85,47 +91,150 @@ const Container4 = () => {
                 clearInterval(autoPlayRef.current);
             }
         };
-    }, [isAutoPlaying, maxIndex]);
+    }, [isAutoPlaying, maxIndex, isDragging]);
 
     // Pause autoplay on hover, resume on leave
     const handleMouseEnter = () => {
-        setIsAutoPlaying(false);
-        if (autoPlayRef.current) {
-            clearInterval(autoPlayRef.current);
+        if (!isDragging) {
+            setIsAutoPlaying(false);
+            if (autoPlayRef.current) {
+                clearInterval(autoPlayRef.current);
+            }
         }
     };
 
     const handleMouseLeave = () => {
-        setIsAutoPlaying(true);
+        if (!isDragging) {
+            setIsAutoPlaying(true);
+        }
     };
 
     const handleNext = () => {
         setCurrentIndex((prev) => (prev >= maxIndex ? 0 : prev + 1));
-        // Pause autoplay briefly when manually navigating
-        setIsAutoPlaying(false);
-        setTimeout(() => setIsAutoPlaying(true), 2000);
+        pauseAutoplayTemporarily();
     };
 
     const handlePrev = () => {
         setCurrentIndex((prev) => (prev <= 0 ? maxIndex : prev - 1));
-        // Pause autoplay briefly when manually navigating
-        setIsAutoPlaying(false);
-        setTimeout(() => setIsAutoPlaying(true), 2000);
+        pauseAutoplayTemporarily();
     };
 
     const handleDotClick = (index) => {
         setCurrentIndex(index);
-        // Pause autoplay briefly when manually navigating
+        pauseAutoplayTemporarily();
+    };
+
+    const pauseAutoplayTemporarily = () => {
         setIsAutoPlaying(false);
         setTimeout(() => setIsAutoPlaying(true), 2000);
     };
+
+    // Drag/Swipe handlers
+    const handleDragStart = (clientX) => {
+        setIsDragging(true);
+        setStartX(clientX);
+        setCurrentX(clientX);
+        setIsAutoPlaying(false);
+        
+        if (carouselRef.current) {
+            carouselRef.current.style.transition = 'none';
+        }
+    };
+
+    const handleDragMove = (clientX) => {
+        if (!isDragging) return;
+        
+        setCurrentX(clientX);
+        const deltaX = clientX - startX;
+        setDragOffset(deltaX);
+        
+        if (carouselRef.current) {
+            const baseTransform = `-${currentIndex * (isMobile ? 100 : 90 / itemsPerView + 2)}%`;
+            const dragPercentage = (deltaX / carouselRef.current.offsetWidth) * 100;
+            carouselRef.current.style.transform = `translateX(calc(${baseTransform} + ${dragPercentage}px))`;
+        }
+    };
+
+    const handleDragEnd = () => {
+        if (!isDragging) return;
+        
+        setIsDragging(false);
+        const threshold = 50; // minimum distance for swipe
+        const deltaX = currentX - startX;
+        
+        if (carouselRef.current) {
+            carouselRef.current.style.transition = 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)';
+        }
+        
+        if (Math.abs(deltaX) > threshold) {
+            if (deltaX > 0 && currentIndex > 0) {
+                // Swiped right - go to previous
+                setCurrentIndex(currentIndex - 1);
+            } else if (deltaX < 0 && currentIndex < maxIndex) {
+                // Swiped left - go to next
+                setCurrentIndex(currentIndex + 1);
+            }
+        }
+        
+        setDragOffset(0);
+        setStartX(0);
+        setCurrentX(0);
+        
+        // Resume autoplay after a short delay
+        setTimeout(() => setIsAutoPlaying(true), 1000);
+    };
+
+    // Mouse events
+    const handleMouseDown = (e) => {
+        e.preventDefault();
+        handleDragStart(e.clientX);
+    };
+
+    const handleMouseMove = (e) => {
+        e.preventDefault();
+        handleDragMove(e.clientX);
+    };
+
+    const handleMouseUp = (e) => {
+        e.preventDefault();
+        handleDragEnd();
+    };
+
+    // Touch events
+    const handleTouchStart = (e) => {
+        handleDragStart(e.touches[0].clientX);
+    };
+
+    const handleTouchMove = (e) => {
+        e.preventDefault();
+        handleDragMove(e.touches[0].clientX);
+    };
+
+    const handleTouchEnd = (e) => {
+        handleDragEnd();
+    };
+
+    // Add global mouse move and up listeners
+    useEffect(() => {
+        if (isDragging) {
+            document.addEventListener('mousemove', handleMouseMove);
+            document.addEventListener('mouseup', handleMouseUp);
+            document.addEventListener('mouseleave', handleMouseUp);
+            
+            return () => {
+                document.removeEventListener('mousemove', handleMouseMove);
+                document.removeEventListener('mouseup', handleMouseUp);
+                document.removeEventListener('mouseleave', handleMouseUp);
+            };
+        }
+    }, [isDragging, handleMouseMove, handleMouseUp]);
 
     useGSAP(() => {
         const tl = gsap.timeline({
             scrollTrigger: {
                 trigger: containerRef.current,
                 start: "top 80%",
-                toggleActions: "play none none none" // only play once
+                toggleActions: "play none none none"
             }
         });
 
@@ -212,11 +321,9 @@ const Container4 = () => {
 
     }, []);
 
-    // Animation when index changes
+    // Animation when index changes (only if not dragging)
     useGSAP(() => {
-        if (carouselRef.current) {
-            const isMobile = window.innerWidth <= 768
-            setIsMobile(isMobile)
+        if (carouselRef.current && !isDragging) {
             gsap.to(carouselRef.current, {
                 x: `-${currentIndex * (isMobile ? 100 : 90 / itemsPerView + 2)}%`,
                 duration: 0.8,
@@ -236,7 +343,7 @@ const Container4 = () => {
                 }
             });
         }
-    }, [currentIndex]);
+    }, [currentIndex, isDragging]);
 
     return (
         <div
@@ -266,7 +373,7 @@ const Container4 = () => {
                     ref={paragraphRef}
                     className='w-full md:w-[40%] text-[17px] font-light paragraph-style mb-0 md:mb-8 lg:mb-10'
                 >
-                    From sun-soaked beaches and crystal-clear waters to vibrant cityscapes bursting with life,
+                    From sun soaked beaches and crystal clear waters to vibrant cityscapes bursting with life,
                     Friigoo brings you handpicked travel experiences across the world's most stunning countries.
                     Wander through ancient streets steeped in history, savor flavors that tell the story of a region,
                     and witness landscapes that take your breath away from snow-capped mountains to lush tropical rainforests.
@@ -334,7 +441,7 @@ const Container4 = () => {
                             color="#99a1af"
                             className={`
                                   w-[50px] h-[50px] md:w-[70px] md:h-[70px]
-                                  ${currentIndex === 0 ? 'opacity-40' : ''}
+                                  ${currentIndex === maxIndex ? 'opacity-40' : ''}
                                 `}
                         />
                     </button>
@@ -342,71 +449,38 @@ const Container4 = () => {
                 <div className='flex-1 overflow-hidden'>
                     <div
                         ref={carouselRef}
-                        className='flex gap-0 md:gap-6'
+                        className={`flex gap-0 md:gap-6 ${isDragging ? 'cursor-grabbing' : 'cursor-grab'}`}
+                        onMouseDown={handleMouseDown}
+                        onTouchStart={handleTouchStart}
+                        onTouchMove={handleTouchMove}
+                        onTouchEnd={handleTouchEnd}
+                        style={{
+                            transition: isDragging ? 'none' : 'transform 0.8s cubic-bezier(0.25, 0.46, 0.45, 0.94)',
+                            userSelect: 'none',
+                            WebkitUserSelect: 'none',
+                            MozUserSelect: 'none',
+                            msUserSelect: 'none'
+                        }}
                     >
                         {countries.map((country, index) => (
                             <div
                                 key={index}
                                 ref={el => cardsRef.current[index] = el}
                                 className='min-w-[100%] md:min-w-[31%] relative group overflow-hidden'
-                            // onMouseEnter={(e) => {
-                            //     gsap.to(e.currentTarget, {
-                            //         y: -8,
-                            //         scale: .96,
-                            //         duration: 0.4,
-                            //         ease: "power2.out"
-                            //     });
-
-                            //     const overlay = e.currentTarget.querySelector('.overlay');
-                            //     const title = e.currentTarget.querySelector('.card-title');
-
-                            //     gsap.to(overlay, {
-                            //         opacity: 0.9,
-                            //         duration: 0.4,
-                            //         ease: "power2.out"
-                            //     });
-
-                            //     gsap.to(title, {
-                            //         y: -5,
-                            //         scale: 1.01,
-                            //         duration: 0.4,
-                            //         ease: "power2.out"
-                            //     });
-                            // }}
-                            // onMouseLeave={(e) => {
-                            //     gsap.to(e.currentTarget, {
-                            //         y: 0,
-                            //         scale: 1,
-                            //         duration: 0.4,
-                            //         ease: "power2.out"
-                            //     });
-
-                            //     const overlay = e.currentTarget.querySelector('.overlay');
-                            //     const title = e.currentTarget.querySelector('.card-title');
-
-                            //     gsap.to(overlay, {
-                            //         opacity: 0.7,
-                            //         duration: 0.4,
-                            //         ease: "power2.out"
-                            //     });
-
-                            //     gsap.to(title, {
-                            //         y: 0,
-                            //         scale: 1,
-                            //         duration: 0.4,
-                            //         ease: "power2.out"
-                            //     });
-                            // }}
+                                style={{
+                                    pointerEvents: isDragging ? 'none' : 'auto'
+                                }}
                             >
                                 <Image
                                     src={country.img}
                                     alt={country.name}
                                     width={200}
                                     height={600}
-                                    className='aspect-[4/4] md:aspect-[3/4] w-full object-cover rounded-lg shadow-lg'
+                                    className='aspect-[4/4] md:aspect-[3/4] w-full object-cover rounded-xl shadow-lg'
+                                    draggable={false}
                                 />
 
-                                <div className='overlay absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent rounded-lg'></div>
+                                <div className='overlay absolute inset-0 bg-gradient-to-t from-black/70 via-black/20 to-transparent rounded-xl'></div>
 
                                 <h3 className='card-title absolute text-3xl font-medium ml-5 mb-8 w-full bottom-0 text-white drop-shadow-lg z-10'>
                                     {country.name}

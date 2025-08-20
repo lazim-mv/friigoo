@@ -128,7 +128,7 @@ const Section2 = () => {
                     return (
                         <div
                             key={i}
-                            className="card p-6 rounded-lg border border-black/20 backdrop-blur-sm"
+                            className="card p-6 rounded-lg border border-[#d3d3d3] backdrop-blur-sm"
                         >
                             <Icon
                                 className="floating-icon w-12 h-12 mb-4 mx-auto text-black"

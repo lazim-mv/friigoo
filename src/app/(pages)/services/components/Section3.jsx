@@ -172,7 +172,7 @@ const Section3 = () => {
                     return (
                         <div
                             key={i}
-                            className="card-item p-6 rounded-lg border border-black/20 backdrop-blur-sm"
+                            className="card-item p-6 rounded-lg border border-[#d3d3d3] backdrop-blur-sm"
                         >
                             <Icon
                                 className={`w-12 h-12 mb-4 mx-auto text-black ${iconClasses[i]}`}

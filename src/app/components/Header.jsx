@@ -7,23 +7,85 @@ import logob from "../../../public/logo/logo.png"; // black logo
 import { Search, Facebook, Instagram, Linkedin, Mail, MessageCircle, Phone } from "lucide-react";
 import { useGSAP } from "@gsap/react";
 import Hamburger from "./common/Hamburger";
+import LogoComponent from "./common/LogoComponent";
+import Logo2 from "./common/Logo2";
+import { usePathname } from "next/navigation";
 
 const Header = () => {
+    const pathname = usePathname();
     const headerRef = useRef(null);
     const mobileMenuRef = useRef(null);
     const [isColorChange, setIsColorChange] = useState(false);
     const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
+    const [isPackagesSubPath, setIsPackagesSubPath] = useState(false);
+    const [isHidden, setIsHidden] = useState(false);
+    const [isScrolled, setIsScrolled] = useState(false);
+
+    // Scroll tracking variables
+    const lastScrollYRef = useRef(0);
+    const tickingRef = useRef(false);
+
+    useEffect(() => {
+        if (pathname?.startsWith("/packages")) {
+            const rest = pathname.replace("/packages", "");
+            setIsPackagesSubPath(rest.length > 1);
+        } else {
+            setIsPackagesSubPath(false);
+        }
+    }, [pathname]);
 
     const navOptions = [
         { label: "Home", href: "/" },
-        { label: "Packages", href: "/packages" },
         { label: "About Us", href: "/about-us" },
+        { label: "Packages", href: "/packages" },
         { label: "Services", href: "/services" },
         { label: "Contact Us", href: "/contact-us" },
     ];
 
+    // Improved scroll handler similar to second header
+    const handleScroll = () => {
+        const header = headerRef.current;
+        if (!header) return;
+
+        const currentY = window.scrollY;
+        const direction = currentY > lastScrollYRef.current ? "down" : "up";
+        const scrollDifference = Math.abs(currentY - lastScrollYRef.current);
+
+        // Add scrolled background when past 10% of viewport height
+        if (currentY > window.innerHeight * 0.1) {
+            header.classList.add("scrolled");
+        } else {
+            header.classList.remove("scrolled");
+        }
+
+        // Hide/show logic with 250px threshold and scroll direction sensitivity
+        if (currentY > 250) {
+            if (direction === "down" && scrollDifference > 5) {
+                // Only hide when scrolling down with some momentum
+                header.classList.add("hidden");
+            } else if (direction === "up" && scrollDifference > 5) {
+                // Show when scrolling up with some momentum
+                header.classList.remove("hidden");
+            }
+        } else {
+            // Always show when near the top
+            header.classList.remove("hidden");
+        }
+
+        lastScrollYRef.current = currentY;
+        tickingRef.current = false;
+    };
+
+    const requestScrollTick = () => {
+        if (!tickingRef.current) {
+            requestAnimationFrame(handleScroll);
+            tickingRef.current = true;
+        }
+    };
+
     useGSAP(() => {
         (async () => {
+            if (isPackagesSubPath) return;
             const gsapModule = await import("../utils/gsapInit");
             const gsap = gsapModule.default;
             const { ScrollTrigger } = gsapModule;
@@ -63,21 +125,18 @@ const Header = () => {
 
             ScrollTrigger.create({
                 trigger: "#hero",
-                start: "bottom top",
+                start: "50px top",
                 onEnter: () => setIsColorChange(true),
                 onLeaveBack: () => setIsColorChange(false),
             });
 
-            let lastScroll = 0;
-            window.addEventListener("scroll", () => {
-                const currentScroll = window.scrollY;
-                if (currentScroll > lastScroll && currentScroll > 100) {
-                    gsap.to(headerEl, { y: -100, duration: 0.3, ease: "power2.out" });
-                } else {
-                    gsap.to(headerEl, { y: 0, duration: 0.3, ease: "power2.out" });
-                }
-                lastScroll = currentScroll;
-            });
+            // Add scroll event listener for new logic
+            window.addEventListener("scroll", requestScrollTick, { passive: true });
+
+            // Cleanup
+            return () => {
+                window.removeEventListener("scroll", requestScrollTick);
+            };
         })();
     }, []);
 
@@ -182,33 +241,29 @@ const Header = () => {
     useEffect(() => {
         if (isMobileMenuOpen) {
             document.body.style.overflow = 'hidden';
+            document.body.style.touchAction = 'none'; // Prevent iOS scroll
         } else {
             document.body.style.overflow = 'unset';
+            document.body.style.touchAction = 'auto';
         }
 
         return () => {
             document.body.style.overflow = 'unset';
+            document.body.style.touchAction = 'auto';
         };
     }, [isMobileMenuOpen]);
-
 
     return (
         <>
             <header
                 ref={headerRef}
-                className={`w-full fixed top-0 left-0 z-[110] transition-colors duration-500 ${isColorChange ? "bg-white/90 backdrop-blur-md shadow-lg" : "bg-transparent"}`}
+                className="w-full fixed top-0 left-0 z-[110] bg-transparent"
             >
                 <div className="px-8 md:px-12 py-4 flex items-center justify-between mx-auto">
                     {/* Logo */}
                     <div className="w-36 aspect-[7/2] relative logo-container">
                         <a href="/">
-                            <Image
-                                src={isMobileMenuOpen || isColorChange ? logob : logow}
-                                alt="Friigoo Logo"
-                                fill
-                                className="object-contain transition-all duration-500"
-                                priority
-                            />
+                            <Logo2 textFill={isMobileMenuOpen || isColorChange ? "black" : "white"} />
                         </a>
                     </div>
 
@@ -251,7 +306,6 @@ const Header = () => {
                                     ? "bg-white/20 border-black/10 hover:bg-black/10"
                                     : "bg-white/10 border-white/20 hover:bg-white/20"
                                 }`}
-                        // onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
                         >
                             <Hamburger
                                 strokeColor={isMobileMenuOpen || isColorChange ? "black" : "white"}
