@@ -200,7 +200,7 @@ const ItenarySwiperSlider = ({ pkgs }) => {
                                     width={1512}
                                     height={1008}
                                     alt="Package background"
-                                    className="absolute bottom-0 left-1/2 -translate-x-1/2 
+                                    className="hidden md:flex absolute bottom-0 left-1/2 -translate-x-1/2 
                                         w-[80%] h-[80%] object-cover opacity-20 md:opacity-60 z-[1]
                                         md:left-auto md:right-0 md:w-[350px] md:h-[350px] 
                                         md:translate-x-0 md:translate-y-[50%] md:object-top"
@@ -216,24 +216,7 @@ const ItenarySwiperSlider = ({ pkgs }) => {
                                     {pkg.title}
                                 </h3>
 
-                                {/* Meta info */}
-                                <div
-                                    className="mb-4 flex flex-wrap gap-4 relative z-10"
-                                    data-swiper-parallax="-150"
-                                >
-                                    <div className="flex gap-2 border border-black/20 rounded-full py-1 px-3 items-center text-[15px] font-light">
-                                        <CalendarCheck className="w-5 h-5" />
-                                        {pkg.day}
-                                    </div>
-                                    <div className="flex gap-2 border border-black/20 rounded-full py-1 px-3 items-center text-[15px] font-light">
-                                        <Car className="w-5 h-5" />
-                                        {pkg.transport}
-                                    </div>
-                                    <div className="flex gap-2 border border-black/20 rounded-full py-1 px-3 items-center text-[15px] font-light">
-                                        <Hamburger className="w-5 h-5" />
-                                        {pkg.meals}
-                                    </div>
-                                </div>
+                                
 
                                 {/* Description / Points */}
                                 <div className="relative z-10" data-swiper-parallax="-100">

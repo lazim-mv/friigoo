@@ -4,6 +4,7 @@ import img2 from "../../../../../public/trek/2.jpg";
 import img3 from "../../../../../public/trek/8.jpg";
 import img4 from "../../../../../public/trek/7.jpg";
 import ItenarySwiperSlider from "./ItenarySwiperSlider";
+import ItenarySwiperSlider2 from "./ItenarySwiperSlider2";
 
 const Itenary = () => {
     const travelPackage = [
@@ -101,18 +102,6 @@ const Itenary = () => {
                         "Visit Mini Siam – miniature landmarks from around the world",
                         "Shopping at Terminal 21 Pattaya",
                         "Evening airport transfer for departure",
-                        "Visit Sanctuary of Truth (Admission included)",
-                        "Explore Nong Nooch Tropical Garden (Admission + Cultural show + Lunch included)",
-                        "Experience 3D fun at Art in Paradise",
-                        "Visit Mini Siam – miniature landmarks from around the world",
-                        "Shopping at Terminal 21 Pattaya",
-                        "Evening airport transfer for departure",
-                        "Visit Sanctuary of Truth (Admission included)",
-                        "Explore Nong Nooch Tropical Garden (Admission + Cultural show + Lunch included)",
-                        "Experience 3D fun at Art in Paradise",
-                        "Visit Mini Siam – miniature landmarks from around the world",
-                        "Shopping at Terminal 21 Pattaya",
-                        "Evening airport transfer for departure",
                     ],
                 },
                 {
@@ -144,7 +133,8 @@ const Itenary = () => {
                     <h2 className="text-3xl md:text-4xl lg:text-6xl mb-6 md:mb-8 lg:mb-10 text-center drop-shadow-lg leading-tight">
                         Sample Itinerary
                     </h2>
-                    <ItenarySwiperSlider pkgs={travelPackage} />
+                    {/* <ItenarySwiperSlider pkgs={travelPackage} /> */}
+                    <ItenarySwiperSlider2 pkgs={travelPackage} />
                 </div>
             </div>
         </section>

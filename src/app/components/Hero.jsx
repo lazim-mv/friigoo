@@ -197,7 +197,7 @@ const Hero = () => {
                     </p>
 
                     <div ref={buttonRef} className="will-change-transform">
-                        <CTAButton label="Explore Packages" borderColor="border-white/20" />
+                        <CTAButton label="Explore Packages" borderColor="border-white/20" route="/packages" />
                     </div>
                 </div>
             </div>

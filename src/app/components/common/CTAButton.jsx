@@ -2,14 +2,16 @@
 "use client";
 import React from "react";
 import { useRouter } from "next/navigation";
+import { ArrowRight, ChevronRight } from "lucide-react";
 
 const CTAButton = ({
     label = "Subscribe",
-    route = null, // you can pass "/about-us", "/services", etc.
-    onClick,      // still allow custom click logic if needed
-    borderColor = "border-white/20",
+    route = null,
+    onClick,
     textColor = "text-white",
+    borderColor = "border-white/20",
     bgColor = "bg-white/20",
+    disableScale = false,
 }) => {
     const router = useRouter();
 
@@ -26,24 +28,27 @@ const CTAButton = ({
         <button
             onClick={handleClick}
             className={`
-        w-full
-        group/button relative inline-flex items-center justify-center overflow-hidden 
-        rounded-md bg-transparent backdrop-blur-lg px-6 py-2
-        text-base font-medium transition-all duration-300 ease-in-out
-        hover:scale-95 hover:shadow-xl hover:shadow-gray-600/50 
-        active:scale-90 active:shadow-lg active:shadow-gray-600/40
-        focus:scale-95 focus:shadow-xl focus:shadow-gray-600/50
-        cursor-pointer border ${borderColor} ${textColor}
-        touch-manipulation select-none
-      `}
+  w-full
+  group/button relative inline-flex items-center justify-center overflow-hidden 
+  rounded-full bg-transparent backdrop-blur-lg px-6 py-2
+  text-base font-medium transition-all duration-300 ease-in-out
+
+  active:shadow-lg hover:shadow-gray-600/50 active:shadow-gray-600/40
+  focus:shadow-gray-600/50
+  group
+  cursor-pointer border ${borderColor} ${textColor}
+  touch-manipulation select-none
+`}
         >
-            <span className="text-[16px] font-normal letter-spacing-link whitespace-nowrap">
+            <span className="text-[16px] font-normal  whitespace-nowrap flex gap-2 items-center">
                 {label}
+                <ArrowRight strokeWidth={1} className="w-5 h-5 transition-transform rotate-[-45deg] duration-300 group-hover:rotate-[-0deg]" />
             </span>
 
             {/* Shine effect */}
             <div
                 className="absolute inset-0 flex h-full w-full justify-center
+                rounded-full
           [transform:skew(-13deg)_translateX(-100%)]
           group-hover/button:duration-1000
           group-hover/button:[transform:skew(-13deg)_translateX(100%)]

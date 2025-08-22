@@ -186,6 +186,9 @@ header:not(.scrolled) .nav-item .hover-line {
   border-color: rgba(0, 0, 0, 0.1) !important;
 }
 
+.swiper-wrapper {
+  transition: height 0.3s ease;
+}
 
 
 .section {
@@ -194,7 +197,7 @@ header:not(.scrolled) .nav-item .hover-line {
 }
 
 .mobileOnlyNoHorizontalPaddingSection {
-    padding: 40px 0px;
+  padding: 40px 0px;
 }
 
 .sectionMargin {
@@ -224,7 +227,12 @@ button {
   font-size: 16px;
 }
 
-li{
+.meta-icons p {
+  font-size: 12px;
+}
+
+
+li {
   font-family: var(--font-poppins);
 }
 
@@ -270,6 +278,16 @@ li{
         calc(16px + 1 * ((100vw - 415px) / (1440 - 415))),
         17px);
   }
+
+  .meta-icons p {
+    font-size: 12px;
+  }
+
+  .meta-icons span {
+    font-size: auto;
+  }
+
+
 }
 
 

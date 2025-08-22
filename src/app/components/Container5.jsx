@@ -216,7 +216,7 @@ const Container5 = () => {
                     ))}
                 </ul>
 
-                <div className='cta-container w-max relative overflow-hidden'>
+                <div className='cta-container w-max relative overflow-hidden md:pb-2'>
                     {/* <div className='absolute inset-0 bg-gradient-to-r from-blue-400/10 to-purple-400/10 rounded-full scale-0 hover:scale-100 transition-transform duration-700 blur-xl' /> */}
                     <CTAButton
                         label='Know More'
