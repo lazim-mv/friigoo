@@ -66,7 +66,7 @@ export default function RootLayout({ children }) {
       >
         <SmoothScrolling>
           <Header />
-          <div className="min-h-screen">
+          <div className="">
             {children}
           </div>
           <Footer />

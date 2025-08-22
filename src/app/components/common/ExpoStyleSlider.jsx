@@ -15,6 +15,7 @@ const ExpoStyleSlider = ({ countries }) => {
                 modules={[EffectCoverflow]}
                 effect="coverflow"
                 grabCursor={true}
+                loop={true}
                 centeredSlides={true}
                 initialSlide={3}
                 slidesPerView={"auto"}
