@@ -18,7 +18,7 @@ const ItenarySwiperSlider = ({ pkgs }) => {
     const swiperRef = useRef(null);
     const [slideHeight, setSlideHeight] = useState(0);
 
-    // measure active slide height
+    // Measure active slide height
     const updateHeight = (swiper) => {
         const activeSlide = swiper.slides[swiper.activeIndex];
         if (activeSlide) {
@@ -28,7 +28,7 @@ const ItenarySwiperSlider = ({ pkgs }) => {
 
     useEffect(() => {
         if (swiperRef.current) {
-            updateHeight(swiperRef.current); // measure once after mount
+            updateHeight(swiperRef.current);
         }
     }, []);
 
@@ -64,15 +64,12 @@ const ItenarySwiperSlider = ({ pkgs }) => {
                 }}
                 onSlideChange={updateHeight}
             >
-
                 {pkgs.map((pkg, index) => (
                     <SwiperSlide key={`${pkg.title}-${index}`}>
                         <div className="group overflow-hidden rounded-xl relative bg-white">
-                            {/* Image */}
-                            <div
-                                className="relative aspect-[4/4] md:aspect-[4/1.5] w-full"
-                                data-swiper-parallax="-40%"
-                            >
+
+                            {/* Image + navigation buttons wrapper */}
+                            <div className="relative aspect-[4/4] md:aspect-[4/1.5] w-full">
                                 <Image
                                     src={pkg.img}
                                     alt={pkg.title || "Package image"}
@@ -82,6 +79,22 @@ const ItenarySwiperSlider = ({ pkgs }) => {
                                     sizes="(max-width: 768px) 100vw, 600px"
                                     draggable={false}
                                 />
+
+                                {/* Navigation buttons centered on image */}
+                                <button className="custom-prev absolute left-2 top-1/2 -translate-y-1/2 z-20">
+                                    <CircleChevronLeftIcon
+                                        strokeWidth={0.5}
+                                        color="#99a1af"
+                                        className="bg-white hover:bg-white/90 rounded-full w-[50px] h-[50px] md:w-[70px] md:h-[70px]"
+                                    />
+                                </button>
+                                <button className="custom-next absolute right-2 top-1/2 -translate-y-1/2 z-20">
+                                    <CircleChevronRightIcon
+                                        strokeWidth={0.5}
+                                        color="#99a1af"
+                                        className="bg-white hover:bg-white/90 rounded-full w-[50px] h-[50px] md:w-[70px] md:h-[70px]"
+                                    />
+                                </button>
                             </div>
 
                             {/* Content */}
@@ -95,9 +108,9 @@ const ItenarySwiperSlider = ({ pkgs }) => {
                                     height={1008}
                                     alt="Package background"
                                     className="absolute bottom-0 left-1/2 -translate-x-1/2 
-                             w-[80%] h-[80%] object-cover opacity-20 md:opacity-60 z-[1]
-                             md:left-auto md:right-0 md:w-[350px] md:h-[350px] 
-                             md:translate-x-0 md:translate-y-[50%] md:object-top"
+                                        w-[80%] h-[80%] object-cover opacity-20 md:opacity-60 z-[1]
+                                        md:left-auto md:right-0 md:w-[350px] md:h-[350px] 
+                                        md:translate-x-0 md:translate-y-[50%] md:object-top"
                                     draggable={false}
                                 />
 
@@ -157,29 +170,7 @@ const ItenarySwiperSlider = ({ pkgs }) => {
                         </div>
                     </SwiperSlide>
                 ))}
-
             </Swiper>
-            <button className="custom-prev absolute left-2 top-1/2 -translate-y-1/2 z-20 bg-white hover:bg-white/90 rounded-full  shadow-md">
-                <CircleChevronLeftIcon
-                    strokeWidth={0.5}
-                    color="#99a1af"
-                    className={`
-                            w-[50px] h-[50px] md:w-[70px] md:h-[70px]
-                            }
-                          `}
-                />
-            </button>
-            <button className="custom-next absolute right-2 top-1/2 -translate-y-1/2 z-20 bg-white hover:bg-white/90 rounded-full  shadow-md">
-                <CircleChevronRightIcon
-                    strokeWidth={0.5}
-                    color="#99a1af"
-                    className={`
-                            w-[50px] h-[50px] md:w-[70px] md:h-[70px]
-                            }
-                          `}
-                />
-            </button>
-
         </div>
     );
 };
