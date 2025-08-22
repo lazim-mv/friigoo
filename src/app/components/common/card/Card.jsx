@@ -6,6 +6,13 @@ import CTAButton from '../CTAButton';
 import { useGSAP } from '@gsap/react';
 import gsap from '@/app/utils/gsapInit';
 import { useRouter } from 'next/navigation';
+import carsvg from '../../../../../public/icons/car.svg';
+import hotelsvg from '../../../../../public/icons/hotel.svg';
+import mealssvg from '../../../../../public/icons/meals.svg';
+import flightsvg from '../../../../../public/icons/flight.svg';
+import mountainssvg from '../../../../../public/icons/mountains.svg';
+import sunnysvg from '../../../../../public/icons/sunny.svg';
+
 
 const PackageCard = ({ travelPackages }) => {
     const router = useRouter();
@@ -121,7 +128,7 @@ const PackageCard = ({ travelPackages }) => {
                     className="package-card flex flex-col items-center w-full h-fit rounded-xl shadow-2xl overflow-hidden cursor-pointer"
                 >
                     {/* Image */}
-                    <div className="w-full overflow-hidden">
+                    <div className="relative w-full overflow-hidden">
                         <Image
                             src={pkg.img}
                             alt={`${pkg.country} package`}
@@ -129,6 +136,75 @@ const PackageCard = ({ travelPackages }) => {
                             width={500}
                             height={300}
                         />
+                        <div className="absolute inset-0 bg-gradient-to-t from-black/90 via-transparent to-transparent" />
+                        {/* bg-[var(--highlight)]/50 */}
+                        <div className="absolute top-4 left-4 bg-[var(--highlight)]  backdrop-blur-sm text-white py-2 rounded-full px-5">
+                            <p className="text-xs text-white" style={{ fontSize: "12px" }}>Starting from</p>
+                            <h3 className="text-lg font-bold leading-none">₹{pkg.price}</h3>
+                        </div>
+                        <div className="absolute bottom-4 left-1/2 -translate-x-1/2 rounded-full bg-white/20 shadow-lg flex gap-5 items-center justify-center py-2 px-6">
+
+                            <div className='flex flex-col justify-center items-center'>
+                                <Image
+                                    src={flightsvg}
+                                    width={32}
+                                    height={32}
+                                    alt='car icon'
+                                    className=' w-8 h-8 invert'
+                                />
+                                <p className='text-white font-light' style={{ fontSize: "12px" }}>FLIGHT</p>
+                            </div>
+                            <div className='flex flex-col justify-center items-center'>
+                                <Image
+                                    src={carsvg}
+                                    width={32}
+                                    height={32}
+                                    alt='car icon'
+                                    className=' w-8 h-8 invert'
+                                />
+                                <p className='text-white font-light' style={{ fontSize: "12px" }}>RIDES</p>
+                            </div>
+                            <div className='flex flex-col justify-center items-center'>
+                                <Image
+                                    src={mountainssvg}
+                                    width={32}
+                                    height={32}
+                                    alt='car icon'
+                                    className=' w-8 h-8 invert'
+                                />
+                                <p className='text-white font-light' style={{ fontSize: "12px" }}>SIGHTS</p>
+                            </div>
+                            <div className='flex flex-col justify-center items-center'>
+                                <Image
+                                    src={mealssvg}
+                                    width={32}
+                                    height={32}
+                                    alt='car icon'
+                                    className=' w-8 h-8 invert'
+                                />
+                                <p className='text-white font-light' style={{ fontSize: "12px" }}>FOOD</p>
+                            </div>
+                            <div className='flex flex-col justify-center items-center'>
+                                <Image
+                                    src={hotelsvg}
+                                    width={32}
+                                    height={32}
+                                    alt='car icon'
+                                    className=' w-8 h-8 invert'
+                                />
+                                <p className='text-white font-light' style={{ fontSize: "12px" }}>HOTEL</p>
+                            </div>
+                            <div className='flex flex-col justify-center items-center'>
+                                <Image
+                                    src={sunnysvg}
+                                    width={32}
+                                    height={32}
+                                    alt='car icon'
+                                    className=' w-8 h-8 invert'
+                                />
+                                <p className='text-white font-light whitespace-nowrap' style={{ fontSize: "12px" }}>{pkg.duration}</p>
+                            </div>
+                        </div>
                     </div>
 
                     {/* Info */}
@@ -138,17 +214,7 @@ const PackageCard = ({ travelPackages }) => {
                             {pkg.country}
                         </h3>
 
-                        {/* Icons */}
-                        <div className="flex items-center gap-10 w-full mb-5">
-                            {pkg.icons.map((icon, index) => (
-                                <div key={index} className="icon-item flex items-center gap-3 transition-all duration-300">
-                                    <span className="transition-transform duration-300">
-                                        {icon.icon}
-                                    </span>
-                                    <p className="transition-colors duration-300">{icon.label}</p>
-                                </div>
-                            ))}
-                        </div>
+
 
                         <hr className="mb-5 w-full bg-black/20 transition-all duration-300" />
 

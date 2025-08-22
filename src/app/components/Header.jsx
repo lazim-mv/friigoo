@@ -320,7 +320,7 @@ const Header = () => {
             {/* Mobile Menu */}
             <div
                 ref={mobileMenuRef}
-                className="section fixed inset-0 z-[100] hidden flex-col  items-start justify-center bg-white"
+                className="section fixed inset-0 z-[100] hidden flex-col  items-start justify-end bg-white"
                 style={{ display: 'none' }}
             >
                 {/* Menu Content */}

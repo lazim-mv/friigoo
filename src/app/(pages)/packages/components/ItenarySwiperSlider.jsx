@@ -8,9 +8,16 @@ import "swiper/css/pagination";
 import "swiper/css/effect-creative";
 import "swiper/css/parallax";
 
-import { CalendarCheck, Car, CircleChevronLeftIcon, CircleChevronRightIcon, Hamburger } from "lucide-react";
+import { CalendarCheck, Car, ChevronLeft, ChevronRight, ChevronRightCircleIcon, ChevronRightIcon, CircleChevronLeftIcon, CircleChevronRightIcon, Hamburger } from "lucide-react";
 import Image from "next/image";
 import img1 from "../../../../../public/itinary/1.svg";
+
+import carsvg from '../../../../../public/icons/car.svg';
+import hotelsvg from '../../../../../public/icons/hotel.svg';
+import mealssvg from '../../../../../public/icons/meals.svg';
+import flightsvg from '../../../../../public/icons/flight.svg';
+import mountainssvg from '../../../../../public/icons/mountains.svg';
+import sunnysvg from '../../../../../public/icons/sunny.svg';
 
 const ItenarySwiperSlider = ({ pkgs }) => {
     if (!pkgs || pkgs.length === 0) return null;
@@ -76,23 +83,109 @@ const ItenarySwiperSlider = ({ pkgs }) => {
                                     fill
                                     className="object-cover rounded-t-xl"
                                     quality={100}
-                                    sizes="(max-width: 768px) 100vw, 600px"
+                                    unoptimized
                                     draggable={false}
                                 />
+                                <div className="absolute inset-0 bg-gradient-to-r from-black/90 via-transparent to-transparent" />
+                                <div className="absolute left-4 md:left-12 bottom-6 md:top-1/2 md:-translate-y-1/2
+                                 md:transform rounded-full  
+                                 flex gap-5 items-start justify-start md:justify-center  md:flex-col flex-wrap md:flex-nowrap z-10"
+                                >
+
+
+                                    <div className='flex gap-2 justify-center items-center bg-black/50 md:bg-white/20 rounded-full shadow-lg py-2 px-6'
+                                        data-swiper-parallax="-300"
+                                    >
+                                        <Image
+                                            src={carsvg}
+                                            width={28}
+                                            height={28}
+                                            className=' w-7 h-7 invert'
+                                            alt='car icon'
+                                        />
+                                        <p className='text-white font-light' style={{ fontSize: "14px" }}>{pkg.transport}</p>
+                                    </div>
+
+                                    <div className='flex gap-2 justify-center items-center bg-black/50 md:bg-white/20 rounded-full shadow-lg py-2 px-6'
+                                        data-swiper-parallax="-250"
+                                    >
+                                        <Image
+                                            src={mealssvg}
+                                            width={32}
+                                            height={32}
+                                            alt='car icon'
+                                            className=' w-7 h-7 invert'
+                                        />
+                                        <p className='text-white font-light' style={{ fontSize: "14px" }}>{pkg.meals}</p>
+                                    </div>
+
+                                    <div className='flex gap-2 justify-center items-center bg-black/50 md:bg-white/20 rounded-full shadow-lg py-2 px-6'
+                                        data-swiper-parallax="-200"
+                                    >
+                                        <Image
+                                            src={sunnysvg}
+                                            width={32}
+                                            height={32}
+                                            alt='car icon'
+                                            className=' w-7 h-7 invert'
+                                        />
+                                        <p className='text-white font-light whitespace-nowrap' style={{ fontSize: "14px" }}>12 Days</p>
+                                    </div>
+                                    <div className='hidden md:flex gap-2 justify-center items-center bg-black/50 md:bg-white/20 rounded-full shadow-lg py-2 px-6'
+                                        data-swiper-parallax="-150"
+                                    >
+                                        <Image
+                                            src={hotelsvg}
+                                            width={32}
+                                            height={32}
+                                            alt='car icon'
+                                            className=' w-7 h-7 invert'
+                                        />
+                                        <p className='text-white font-light' style={{ fontSize: "14px" }}>HOTEL</p>
+                                    </div>
+                                    <div className='hidden md:flex gap-2 justify-center items-center bg-black/50 md:bg-white/20 rounded-full shadow-lg py-2 px-6'
+                                        data-swiper-parallax="-100"
+                                    >
+                                        <Image
+                                            src={mountainssvg}
+                                            width={32}
+                                            height={32}
+                                            alt='car icon'
+                                            className=' w-7 h-7 invert'
+                                        />
+                                        <p className='text-white font-light' style={{ fontSize: "14px" }}>SIGHTS</p>
+                                    </div>
+                                    <div className='hidden md:flex gap-2 justify-center items-center bg-black/50 md:bg-white/20 rounded-full shadow-lg py-2 px-6'
+                                        data-swiper-parallax="-80"
+                                    >
+                                        <Image
+                                            src={flightsvg}
+                                            width={32}
+                                            height={32}
+                                            alt='car icon'
+                                            className=' w-7 h-7 invert'
+                                        />
+                                        <p className='text-white font-light' style={{ fontSize: "14px" }}>FLIGHT</p>
+                                    </div>
+                                </div>
 
                                 {/* Navigation buttons centered on image */}
-                                <button className="custom-prev absolute left-2 top-1/2 -translate-y-1/2 z-20">
-                                    <CircleChevronLeftIcon
-                                        strokeWidth={0.5}
-                                        color="#99a1af"
-                                        className="bg-white hover:bg-white/90 rounded-full w-[50px] h-[50px] md:w-[70px] md:h-[70px]"
+                                <button className="custom-prev absolute left-2 top-1/2 -translate-y-1/2 z-20
+                                rounded-full w-[40px] h-[40px] bg-black/80
+                                hover:scale-95 hover:bg-black/60  transition">
+                                    <ChevronLeft
+                                        strokeWidth={1}
+                                        color="white"
+                                        className="w-full h-full"
                                     />
                                 </button>
-                                <button className="custom-next absolute right-2 top-1/2 -translate-y-1/2 z-20">
-                                    <CircleChevronRightIcon
-                                        strokeWidth={0.5}
-                                        color="#99a1af"
-                                        className="bg-white hover:bg-white/90 rounded-full w-[50px] h-[50px] md:w-[70px] md:h-[70px]"
+                                <button className="custom-next absolute right-2 top-1/2 -translate-y-1/2 z-20 
+                                rounded-full w-[40px] h-[40px] bg-black/80  
+                                hover:scale-95 hover:bg-black/60  transition">
+                                    <ChevronRight
+                                        strokeWidth={1}
+                                        color="white"
+                                        className="w-full h-full"
                                     />
                                 </button>
                             </div>
@@ -157,7 +250,7 @@ const ItenarySwiperSlider = ({ pkgs }) => {
                                         ) : (
                                             <ul
                                                 key={idx}
-                                                className="list-disc pl-5 space-y-2 text-[15px] font-light"
+                                                className="list-disc pl-10 space-y-2 text-[15px] font-light"
                                             >
                                                 {block.items.map((point, pIdx) => (
                                                     <li key={`${idx}-${pIdx}`}>{point}</li>
