@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import { Phone, Instagram, Mail, MessageCircle } from "lucide-react";
-import img1 from "../../../../public/about-page/2.jpg";
+import img1 from "../../../../public/about-page/3.webp";
 import CTAButton from "./CTAButton";
 import { useGSAP } from "@gsap/react";
 import gsap from "@/app/utils/gsapInit";

@@ -1,5 +1,5 @@
 import React from 'react'
-import img1 from '../../../../../public/trek/8.jpg'
+import img1 from '../../../../../public/trek/8.webp'
 import Section1 from '../../components/Section1'
 import { travelPackages } from '@/app/data'
 import Section2 from '../components/Section2'

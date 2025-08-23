@@ -1,6 +1,6 @@
 import React from 'react'
 import Section1 from '../components/Section1'
-import img1 from '../../../../public/trek/6.jpg'
+import img1 from '../../../../public/about-page/6.webp'
 import PackageCard from '@/app/components/common/card/Card'
 import { travelPackages } from '@/app/data'
 import ContactForm from '@/app/components/common/ContactForm'

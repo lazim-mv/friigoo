@@ -2,7 +2,7 @@
 
 import Image from 'next/image'
 import React, { useRef } from 'react'
-import CTAButton from './common/CTAButton'
+import CTAButton1 from './common/CTAButton1'
 
 import siteseeing from '../../../public/about/siteseeing.webp'
 import relax from '../../../public/about/relax.webp'
@@ -207,7 +207,7 @@ const About = ({ btn = true, heading, desc1, desc2, smallCards = false }) => {
 
                     {btn &&
                         <div className='w-max'>
-                            <CTAButton
+                            <CTAButton1
                                 label="Know More"
                                 textColor="#0a0a0a"
                                 bgColor="bg-black/10"

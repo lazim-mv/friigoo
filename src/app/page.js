@@ -8,6 +8,7 @@ import Container5 from "./components/Container5";
 import Testimonials from "./components/Testimonials";
 import ContactForm from "./components/common/ContactForm";
 import Banner from "./(pages)/about-us/components/Banner";
+import bannberImg from '../../public/banner/4.webp'
 
 export default function Home() {
   return (
@@ -17,7 +18,7 @@ export default function Home() {
       <PackageCard travelPackages={travelPackages.splice(0, 3)} />
       <Container4 />
       <Container5 />
-      <Banner />
+      <Banner img={bannberImg} />
       <ContactForm />
       <Testimonials />
 

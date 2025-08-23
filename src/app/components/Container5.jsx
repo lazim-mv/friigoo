@@ -1,8 +1,8 @@
 "use client"
 import Image from 'next/image'
 import React, { useRef, useEffect, useState } from 'react'
-import img1 from '../../../public/trek/4.jpg'
-import CTAButton from './common/CTAButton'
+import img1 from '../../../public/trek/4.webp'
+import CTAButton1 from './common/CTAButton1'
 import { CheckCircleIcon } from 'lucide-react'
 import { useGSAP } from '@gsap/react'
 import gsap from '../utils/gsapInit'
@@ -218,13 +218,14 @@ const Container5 = () => {
 
                 <div className='cta-container w-max relative overflow-hidden md:pb-2'>
                     {/* <div className='absolute inset-0 bg-gradient-to-r from-blue-400/10 to-purple-400/10 rounded-full scale-0 hover:scale-100 transition-transform duration-700 blur-xl' /> */}
-                    <CTAButton
+                    <CTAButton1
                         label='Know More'
                         textColor='#0a0a0a'
                         bgColor='bg-black/10'
                         borderColor='border-black/10'
                         className='relative z-10 hover:bg-black/20 hover:scale-105 hover:shadow-lg transition-all duration-500'
                         route="/services"
+                        disableScale={true}
                     />
                 </div>
             </div>

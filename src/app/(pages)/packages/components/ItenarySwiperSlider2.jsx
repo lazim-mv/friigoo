@@ -10,7 +10,7 @@ import "swiper/css/parallax";
 
 import { ChevronLeft, ChevronRight, Star } from "lucide-react";
 import Image from "next/image";
-import CTAButton from "@/app/components/common/CTAButton";
+import CTAButton1 from "@/app/components/common/CTAButton1";
 
 import carsvg from '../../../../../public/icons/car.svg';
 import hotelsvg from '../../../../../public/icons/hotel.svg';
@@ -19,6 +19,7 @@ import flightsvg from '../../../../../public/icons/flight.svg';
 import mountainssvg from '../../../../../public/icons/mountains.svg';
 import sunnysvg from '../../../../../public/icons/sunny.svg';
 import { HighlightsBlock } from "./HighlightsBlock";
+import Ratings from "@/app/components/common/Ratings";
 
 const ItenarySwiperSlider2 = ({ pkgs }) => {
     if (!pkgs || pkgs.length === 0) return null;
@@ -73,7 +74,7 @@ const ItenarySwiperSlider2 = ({ pkgs }) => {
         modules: [Pagination, EffectFade, Parallax, Navigation],
         slidesPerView: 1,
         spaceBetween: 0,
-        speed: 600, 
+        speed: 600,
         loop: true,
         parallax: true,
         effect: "fade",
@@ -183,48 +184,40 @@ const ItenarySwiperSlider2 = ({ pkgs }) => {
                                     </h2>
 
                                     {/* Rating */}
-                                    <div className="flex items-center gap-2 mb-6">
-                                        <div className="flex">
-                                            {[...Array(5)].map((_, i) => (
-                                                <Star
-                                                    key={i}
-                                                    className="w-4 h-4 fill-amber-400 text-amber-400"
-                                                />
-                                            ))}
+                                    
+                                        {index === 0 && <Ratings classes="mb-6" />}
+
+                                        {/* Content */}
+                                        <div className="space-y-4 mb-8">
+                                            {pkg.content.map((block, idx) =>
+                                                block.type === "description" ? (
+                                                    block.items.map((desc, dIdx) => (
+                                                        <p
+                                                            key={`${idx}-${dIdx}`}
+                                                            className="text-gray-600 leading-relaxed font-light text-lg"
+                                                        >
+                                                            {desc}
+                                                        </p>
+                                                    ))
+                                                ) : (
+                                                    <HighlightsBlock key={idx} block={block} idx={idx} swiper={swiper} />
+                                                )
+                                            )}
                                         </div>
-                                        <span className="text-sm text-gray-600 font-medium">4.8 (127 reviews)</span>
-                                    </div>
 
-                                    {/* Content */}
-                                    <div className="space-y-4 mb-8">
-                                        {pkg.content.map((block, idx) =>
-                                            block.type === "description" ? (
-                                                block.items.map((desc, dIdx) => (
-                                                    <p
-                                                        key={`${idx}-${dIdx}`}
-                                                        className="text-gray-600 leading-relaxed font-light text-lg"
-                                                    >
-                                                        {desc}
-                                                    </p>
-                                                ))
-                                            ) : (
-                                                <HighlightsBlock key={idx} block={block} idx={idx} swiper={swiper} />
-                                            )
-                                        )}
-                                    </div>
-
-                                    <div className='cta-container w-max relative overflow-hidden md:pb-2'>
-                                        <CTAButton
-                                            label="Chat with us"
-                                            textColor="#0a0a0a"
-                                            bgColor="bg-black/10"
-                                            borderColor="border-black/10"
-                                            route="/about-us"
-                                        />
+                                        <div className='cta-container w-max relative overflow-hidden md:pb-2'>
+                                            <CTAButton1
+                                                label="Chat with us"
+                                                textColor="#0a0a0a"
+                                                bgColor="bg-black/10"
+                                                borderColor="border-black/10"
+                                                route="/about-us"
+                                                disableScale={true}
+                                            />
+                                        </div>
                                     </div>
                                 </div>
                             </div>
-                        </div>
                     </SwiperSlide>
                 ))}
             </Swiper>

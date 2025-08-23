@@ -1,12 +1,12 @@
 "use client"
 import Image from 'next/image'
 import React, { useRef, useEffect, useState } from 'react'
-import img1 from '../../../../../public/service-page/5.jpg'
-import img2 from '../../../../../public/service-page/4.jpg'
-import img3 from '../../../../../public/service-page/2.jpg'
+import img1 from '../../../../../public/service-page/5.webp'
+import img2 from '../../../../../public/service-page/4.webp'
+import img3 from '../../../../../public/service-page/2.webp'
 
 
-import CTAButton from '@/app/components/common/CTAButton'
+import CTAButton1 from '@/app/components/common/CTAButton1'
 import { CheckCircleIcon } from 'lucide-react'
 import { useGSAP } from '@gsap/react'
 import gsap from "@/app/utils/gsapInit";

@@ -1,8 +1,8 @@
 import React from "react";
-import img1 from "../../../../../public/trek/6.jpg";
-import img2 from "../../../../../public/trek/2.jpg";
-import img3 from "../../../../../public/trek/8.jpg";
-import img4 from "../../../../../public/trek/7.jpg";
+import img1 from "../../../../../public/trek/6.webp";
+import img2 from "../../../../../public/trek/2.webp";
+import img3 from "../../../../../public/trek/8.webp";
+import img4 from "../../../../../public/trek/7.webp";
 import ItenarySwiperSlider from "./ItenarySwiperSlider";
 import ItenarySwiperSlider2 from "./ItenarySwiperSlider2";
 

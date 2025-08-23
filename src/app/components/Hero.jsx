@@ -1,7 +1,6 @@
 "use client";
 import React, { useRef, useState, useEffect } from "react";
-import CTAButton from "./common/CTAButton";
-import { Volume2, VolumeX } from "lucide-react";
+import CTAButton1 from "./common/CTAButton1";
 import { useGSAP } from "@gsap/react";
 import gsap from "../utils/gsapInit";
 
@@ -141,8 +140,8 @@ const Hero = () => {
                 autoPlay
                 loop
                 muted
-                playsInline   
-                preload="auto" 
+                playsInline
+                preload="auto"
             >
                 <source src="/vid/11.mp4" type="video/mp4" />
             </video>
@@ -197,7 +196,7 @@ const Hero = () => {
                     </p>
 
                     <div ref={buttonRef} className="will-change-transform">
-                        <CTAButton label="Explore Packages" borderColor="border-white/20" route="/packages" />
+                        <CTAButton1 label="Explore Packages" borderColor="border-white/20" route="/packages" hoverText={false} />
                     </div>
                 </div>
             </div>

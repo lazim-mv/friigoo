@@ -1,46 +1,80 @@
+// components/CTAButton.jsx
+"use client";
 import React from "react";
+import { useRouter } from "next/navigation";
+import { ArrowRight } from "lucide-react";
 
-
-
-const CTAButton1 = ({
-  mx = "mx-0",
-  label = "Subscribe",
-  route = null,
-  onClick,
-  textColor = "text-black",
+const CTAButton = ({
+    label = "Subscribe",
+    route = null,
+    onClick,
+    textColor = "text-white",
+    borderColor = "border-white/20",
+    bgColor = "bg-white/20",
+    disableScale = false,
+    hoverText = true,
 }) => {
-  return (
-    <button
-      type="button"
-      onClick={onClick}
-      className={`flex justify-center gap-2 items-center mx-auto shadow-xl bg-transparent backdrop-blur-md isolation-auto 
-  border-gray-50 before:absolute before:w-full before:transition-all before:duration-700 hover:before:w-full 
-  before:-left-full hover:before:left-0 before:rounded-full 
-  before:bg-emerald-500 hover:text-gray-50 before:-z-10 
-  before:aspect-square hover:before:scale-150 before:hover:duration-700 before:content-[''] 
-  relative z-10 px-4 py-2 overflow-hidden border-2 rounded-full group
-  ${mx} ${textColor}`}
-    >
-      <span className={`relative z-10 text-[16px] font-normal tracking-wide whitespace-nowrap group-hover:text-gray-50`}>
-        {label}
-      </span>
+    const router = useRouter();
 
-      <svg
-        className="w-8 h-8 justify-end group-hover:rotate-90 group-hover:bg-white
-         text-gray-50 ease-linear duration-300 rounded-full border border-gray-700 group-hover:border-none p-2 rotate-45"
-        viewBox="0 0 16 19"
-        xmlns="http://www.w3.org/2000/svg"
-      >
-        <path
-          d="M7 18C7 18.5523 7.44772 19 8 19C8.55228 19 9 18.5523 9 18H7ZM8.70711 0.292893C8.31658 -0.0976311 7.68342 -0.0976311 7.29289 0.292893L0.928932 6.65685C0.538408 7.04738 0.538408 7.68054 0.928932 8.07107C1.31946 8.46159 1.95262 8.46159 2.34315 8.07107L8 2.41421L13.6569 8.07107C14.0474 8.46159 14.6805 8.46159 15.0711 8.07107C15.4616 7.68054 15.4616 7.04738 15.0711 6.65685L8.70711 0.292893ZM9 18L9 1H7L7 18H9Z"
-          className="fill-gray-800 group-hover:fill-gray-800"
-        />
-      </svg>
+    const handleClick = (e) => {
+        if (onClick) {
+            onClick(e);
+        }
+        if (route) {
+            router.push(route);
+        }
+    };
 
-      {/* Animated emerald background */}
+    return (
+        <button
+            onClick={handleClick}
+            className={`cursor-pointer
+                group relative inline-flex items-center justify-center
+                px-8 py-3 rounded-full overflow-hidden
+                bg-transparent border ${borderColor} ${textColor}
+                text-[15px] font-medium letter-spacing-wide
+                transition-all duration-500 ease-out
+                hover:shadow-lg hover:shadow-black/10
+                active:scale-95 focus:outline-none focus:ring-2 focus:ring-black/20
+                backdrop-blur-sm
+                ${disableScale ? '' : 'hover:scale-105'}
+                touch-manipulation select-none
+            `}
+        >
+            {/* Background fill effect */}
+            {/* absolute inset-0 ${bgColor.replace('/20', '/5')}  */}
+            <div
+                className={`
+                    absolute inset-0 bg-black/30 
+                    scale-x-0 group-hover:scale-x-100 group-active:scale-x-100 group-focus:scale-x-100
+                    transition-transform duration-500 ease-out origin-left
+                    rounded-full
+                `}
+            />
+{/* ${hoverText ? "group-hover:text-[var(--highlight)]" : "text-white"} transition-colors duration-300`} */}
+            {/* Content */}
+            <span className={`relative z-10 flex items-center gap-2.5 
+            ${hoverText ? "group-hover:text-white" : "group-hover:text-white"} transition-colors duration-300`}
+            >
+                {label}
+                <ArrowRight
+                    strokeWidth={1.5}
+                    className="w-4 h-4 transition-all duration-300 
+                               group-hover:translate-x-1 group-active:translate-x-2"
+                />
+            </span>
 
-    </button>
-  );
+            {/* Subtle border glow */}
+            <div
+                className={`
+                    absolute inset-0 rounded-full opacity-0 
+                    group-hover:opacity-20 transition-opacity duration-500
+                    border ${borderColor.replace('/20', '/40')}
+                    scale-110
+                `}
+            />
+        </button>
+    );
 };
 
-export default CTAButton1;
+export default CTAButton;
