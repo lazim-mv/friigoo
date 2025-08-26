@@ -80,12 +80,12 @@ const Footer = () => {
                 {/* Social Media */}
                 <div>
                     <h3 className="text-lg font-semibold mb-6 md:mb-8 lg:mb-10">Follow Us</h3>
-                    <div className="flex gap-4 text-gray-400 flex-col">
+                    <div className="flex gap-4 text-gray-400 flex-col lists">
                         <a
                             href="https://www.linkedin.com"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="hover:text-white transition flex gap-2 items-center"
+                            className="w-max transition flex gap-2 items-center"
                         >
                             <Linkedin size={22} strokeWidth={1.5} /> LinkedIn
                         </a>
@@ -93,7 +93,7 @@ const Footer = () => {
                             href="https://www.instagram.com"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="hover:text-white transition flex gap-2 items-center"
+                            className="w-max transition flex gap-2 items-center"
                         >
                             <Instagram size={22} strokeWidth={1.5} /> Instagram
                         </a>
@@ -101,7 +101,7 @@ const Footer = () => {
                             href="https://www.facebook.com"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="hover:text-white transition flex gap-2 items-center"
+                            className="w-max transition flex gap-2 items-center"
                         >
                             <Facebook size={22} strokeWidth={1.5} /> Facebook
                         </a>
@@ -109,7 +109,7 @@ const Footer = () => {
                             href="https://wa.me/1234567890"
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="hover:text-white transition flex gap-2 items-center"
+                            className="w-max transition flex gap-2 items-center"
                         >
                             <MessageCircle size={22} strokeWidth={1.5} /> WhatsApp
                         </a>
@@ -118,8 +118,9 @@ const Footer = () => {
             </div>
 
             {/* Bottom Bar */}
-            <div className="border-t border-gray-700 mt-8 pt-4 text-center text-gray-500 text-sm pb-5">
-                © {new Date().getFullYear()} Friigoo. All rights reserved.
+            <div className="flex justify-between border-t border-gray-700 mt-8 pt-4 text-center text-gray-500 text-sm pb-5 lists">
+                <p>© {new Date().getFullYear()} Friigoo. All rights reserved.</p>
+                <a href="https://lazim-mv.vercel.app/" className="w-max" target="_blank">Website by: Lazim Mv </a>
             </div>
         </footer>
     );

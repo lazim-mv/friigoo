@@ -196,6 +196,16 @@ header:not(.scrolled) .nav-item .hover-line {
   /* default mobile padding */
 }
 
+.sectionHorizontal {
+  padding-left: 30px;
+  padding-right: 30px;
+}
+
+.sectionVertical {
+  padding: 40px 0;
+}
+
+
 .mobileOnlyNoHorizontalPaddingSection {
   padding: 40px 0px;
 }
@@ -220,6 +230,10 @@ h3 {
   font-size: 25px;
 }
 
+p,
+li {
+  color: #4a5565;
+}
 
 p,
 a,
@@ -243,7 +257,14 @@ li {
     padding: 40px 30px;
   }
 
+  .sectionHorizontal {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
 
+  .sectionVertical {
+    padding: 40px 0;
+  }
 }
 
 @media only screen and (min-width: 769px) {
@@ -254,6 +275,15 @@ li {
 
   .section {
     padding: 96px 30px;
+  }
+
+  .sectionHorizontal {
+    padding-left: 30px;
+    padding-right: 30px;
+  }
+
+  .sectionVertical {
+    padding: 96px 0;
   }
 
   h2 {
@@ -300,6 +330,15 @@ li {
   .section {
     padding: 96px 70px;
   }
+
+  .sectionHorizontal {
+    padding-left: 70px;
+    padding-right: 70px;
+  }
+
+  .sectionVertical {
+    padding: 96px 0;
+  }
 }
 
 @media only screen and (min-width: 1401px) {
@@ -310,6 +349,15 @@ li {
 
   .section {
     padding: 96px 140px;
+  }
+
+  .sectionHorizontal {
+    padding-left: 140px;
+    padding-right: 140px;
+  }
+
+  .sectionVertical {
+    padding: 96px 0;
   }
 }
 

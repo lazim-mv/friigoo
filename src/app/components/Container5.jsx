@@ -207,11 +207,11 @@ const Container5 = () => {
                                 />
                                 <div className='absolute inset-0 bg-green-400/20 rounded-full scale-0 group-hover:scale-150 transition-transform duration-500 blur-sm' />
                             </div>
-                            <span
+                            <p
                                 style={{ fontFamily: "var(--font-poppins)" }}
                                 className='group-hover:text-gray-900 font-light text-[#09090b] transition-colors duration-300 whitespace-nowrap'>
                                 {point}
-                            </span>
+                            </p>
                         </li>
                     ))}
                 </ul>

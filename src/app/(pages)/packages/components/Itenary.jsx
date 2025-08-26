@@ -33,6 +33,14 @@ const Itenary = () => {
                         "Relax at Pattaya Beach",
                     ],
                 },
+                {
+                    type: "description",
+                    items: [
+                        "Welcome to Pattaya! Upon arrival, our team will assist you with smooth transfers to your hotel.",
+                        "Enjoy your first day exploring iconic landmarks and soaking in the local culture.",
+                        "Arrival & departure service will have 01 van & 01 car considering luggage (costing is based on this arrangement).",
+                    ],
+                },
             ],
             img: img1,
         },

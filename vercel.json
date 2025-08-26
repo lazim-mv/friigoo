@@ -1,0 +1,12 @@
+{
+    "rewrites": [
+        {
+            "source": "/admin",
+            "destination": "https://friigoo-admin.vercel.app/"
+        },
+        {
+            "source": "/admin/:path*",
+            "destination": "https://friigoo-admin.vercel.app/:path*"
+        }
+    ]
+}

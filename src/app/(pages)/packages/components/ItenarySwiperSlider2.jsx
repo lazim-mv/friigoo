@@ -159,7 +159,7 @@ const ItenarySwiperSlider2 = ({ pkgs }) => {
                                                 className="w-6 h-6 md:w-7 md:h-7 invert"
                                                 alt={`${meta.text} icon`}
                                             />
-                                            <p className={`text-white font-light ${meta.whitespace || ''}`}>
+                                            <p className={`text-white font-light ${meta.whitespace || ''}`} style={{color: 'white'}}>
                                                 {pkg[meta.text] || meta.text}
                                             </p>
                                         </div>

@@ -56,7 +56,7 @@ const Banner = ({ img }) => {
                 </div>
 
                 <p className="z-10 w-full md:w-[40%] text-center lg:text[17px] md:text-[16px] font-light paragraph-style mb-6 md:mb-8 leading-relaxed
-                      drop-shadow-lg [text-shadow:_1px_1px_4px_rgb(0_0_0_/_70%)]">
+                      drop-shadow-lg [text-shadow:_1px_1px_4px_rgb(0_0_0_/_70%)]" style={{ color: "white" }}>
                     From flights and stays to unique adventures, Friigoo brings everything you need into one smooth, stress-free travel experience.
                 </p>
 

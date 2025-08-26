@@ -189,7 +189,7 @@ const Hero = () => {
         font-light mb-8 sm:mb-10 lg:mb-12 
         leading-relaxed will-change-transform
     "
-                        style={{ textShadow: '0 2px 10px rgba(0,0,0,0.5)' }}
+                        style={{ textShadow: '0 2px 10px rgba(0,0,0,0.5)',color:'#fff' }}
                     >
                         Discover hidden gems, explore breathtaking destinations, and book
                         your dream trip all in one place with Friigoo.

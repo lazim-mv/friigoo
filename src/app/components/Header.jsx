@@ -257,9 +257,9 @@ const Header = () => {
         <>
             <header
                 ref={headerRef}
-                className="w-full fixed top-0 left-0 z-[110] bg-transparent"
+                className="w-full fixed top-0 left-0 z-[110] bg-transparent "
             >
-                <div className="px-8 md:px-12 py-4 flex items-center justify-between mx-auto">
+                <div className="sectionHorizontal py-4 flex items-center justify-between mx-auto">
                     {/* Logo */}
                     <div className="w-36 aspect-[7/2] relative logo-container">
                         <a href="/">
