@@ -118,9 +118,10 @@ const Footer = () => {
             </div>
 
             {/* Bottom Bar */}
-            <div className="flex justify-between border-t border-gray-700 mt-8 pt-4 text-center text-gray-500 text-sm pb-5 lists">
+            <div className="flex flex-col md:flex-row items-start md:items-center
+            gap-2 justify-between border-t border-gray-700 mt-8 pt-4 text-center text-gray-500 text-sm pb-5 lists">
                 <p>© {new Date().getFullYear()} Friigoo. All rights reserved.</p>
-                <a href="https://lazim-mv.vercel.app/" className="w-max" target="_blank">Website by: Lazim Mv </a>
+                <a href="https://lazim-mv.vercel.app/" className="w-max" target="_blank">Site by: Lazim Mv </a>
             </div>
         </footer>
     );

@@ -3,7 +3,7 @@ import React, { useRef, useState } from 'react'
 import { useGSAP } from '@gsap/react';
 import gsap from '@/app/utils/gsapInit';
 
-const ContactPage = () => {
+const ContactPage = ({paddingBottom}) => {
     const containerRef = useRef(null);
     const leftContentRef = useRef(null);
     const rightFormRef = useRef(null);
@@ -86,7 +86,7 @@ const ContactPage = () => {
     }, { scope: containerRef });
 
     return (
-        <div ref={containerRef} className="section min-h-screen bg-gray-50 py-16 px-4">
+        <div ref={containerRef} className="section min-h-screen  py-16 px-4">
             <div className="max-w-7xl mx-auto">
                 {/* Header */}
                 <div className="text-center mb-16">

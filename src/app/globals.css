@@ -152,6 +152,7 @@ header:not(.scrolled) .nav-item .hover-line {
   font-size: 8vw;
   font-size: 25px;
   font-weight: 300;
+  color: black;
 }
 
 .lists a:hover {
@@ -228,6 +229,12 @@ h3 {
 
 .footer h3 {
   font-size: 25px;
+}
+
+.footer p,
+li,
+a {
+  color: #99a1af;
 }
 
 p,

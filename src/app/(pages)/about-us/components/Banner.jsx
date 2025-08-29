@@ -62,6 +62,7 @@ const Banner = ({ img }) => {
 
                 <div className="w-max">
                     <CTAButton1
+                        route="/packages"
                         label="Explore Destinations"
                         textColor="#0a0a0a"
                         borderColor="border-white/10"

@@ -10,7 +10,7 @@ import "swiper/css/autoplay";
 import img1 from '../../../public/testi/1.webp'
 import { CircleChevronLeftIcon, CircleChevronRightIcon } from 'lucide-react';
 
-const Testimonials = () => {
+const Testimonials = ({ marginTop }) => {
   const swiperRef = useRef(null);
 
   const testimonials = useMemo(() => [
@@ -87,11 +87,11 @@ const Testimonials = () => {
   }, []);
 
   return (
-    <div className='sectionMargin relative w-full h-fit overflow-hidden' style={{ marginBottom: "0" }}>
-      <Image 
-        src={img1} 
-        alt='friigoo trip planner website testimonial background' 
-        className='w-full h-full object-cover absolute top-0 left-0' 
+    <div className='sectionMargin relative w-full h-fit overflow-hidden' style={{ marginBottom: "0", marginTop: marginTop }}>
+      <Image
+        src={img1}
+        alt='friigoo trip planner website testimonial background'
+        className='w-full h-full object-cover absolute top-0 left-0'
       />
       <div className='absolute inset-0 bg-gradient-to-b from-black/10 via-transparent to-black/20' />
 
@@ -126,12 +126,12 @@ const Testimonials = () => {
                   <div className='flex gap-4 items-center'>
                     <div className='w-14 h-14 rounded-full overflow-hidden ring-2 ring-white/30 
                                    group-hover:ring-white/60 transition-all duration-300'>
-                      <Image 
-                        className='w-full h-full object-cover' 
-                        src={testi.img} 
-                        width={56} 
-                        height={56} 
-                        alt={`Testimonial by ${testi.name}`} 
+                      <Image
+                        className='w-full h-full object-cover'
+                        src={testi.img}
+                        width={56}
+                        height={56}
+                        alt={`Testimonial by ${testi.name}`}
                       />
                     </div>
                     <div className='flex flex-col'>
@@ -146,22 +146,22 @@ const Testimonials = () => {
         </div>
 
         <div className='flex gap-6 mx-auto pt-8 md:pt-10'>
-          <button 
+          <button
             onClick={handlePrevClick}
             className='hover:scale-90 transition-all duration-300 cursor-pointer hover:drop-shadow-2xl'
           >
-            <CircleChevronLeftIcon  
-              strokeWidth={0.5} 
-              className='w-[50px] h-[50px] md:w-[70px] md:h-[70px] text-white/50 md:text-black/20' 
+            <CircleChevronLeftIcon
+              strokeWidth={0.5}
+              className='w-[50px] h-[50px] md:w-[70px] md:h-[70px] text-white/50 md:text-black/20'
             />
           </button>
-          <button 
+          <button
             onClick={handleNextClick}
             className='hover:scale-90 transition-all duration-300 cursor-pointer hover:drop-shadow-2xl'
           >
-            <CircleChevronRightIcon  
-              strokeWidth={0.5} 
-              className='w-[50px] h-[50px] md:w-[70px] md:h-[70px] text-white/50 md:text-black/20' 
+            <CircleChevronRightIcon
+              strokeWidth={0.5}
+              className='w-[50px] h-[50px] md:w-[70px] md:h-[70px] text-white/50 md:text-black/20'
             />
           </button>
         </div>

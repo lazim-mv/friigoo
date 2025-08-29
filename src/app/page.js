@@ -1,4 +1,3 @@
-"use client"
 import Hero from "./components/Hero";
 import About from "./components/About";
 import { travelPackages } from "./data";
@@ -10,27 +9,26 @@ import ContactForm from "./components/common/ContactForm";
 import Banner from "./(pages)/about-us/components/Banner";
 import bannberImg from '../../public/banner/4.webp'
 
-export default function Home() {
+export default async function Home() {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_SITE_URL}/api/packages`);
+
+  if (!res.ok) {
+    throw new Error("Failed to fetch packages");
+  }
+
+  const packages = await res.json();
   return (
     <div className="">
       <Hero />
       <About />
-      <PackageCard travelPackages={travelPackages.splice(0, 3)} />
+      <PackageCard
+        btn={false}
+        travelPackages={packages && packages !== undefined && packages.splice(0, 3)} />
       <Container4 />
       <Container5 />
       <Banner img={bannberImg} />
       <ContactForm />
       <Testimonials />
-
-
-      {/* <video
-        className="w-full h-screen object-cover"
-        autoPlay
-        loop
-        muted
-      >
-        <source src="/4.mov" type="video/mp4" />
-      </video> */}
     </div>
   );
 }

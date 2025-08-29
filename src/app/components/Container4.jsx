@@ -206,143 +206,51 @@ const Container4 = () => {
     }, [currentIndex, isDragging]);
 
     return (
-        <div
-            ref={containerRef}
-            className='
-                    px-[30px] py-[80px] md:py-[96px] my-[40px] md:my-[96px`]
+        <>
+            <div
+                ref={containerRef}
+                className='
+                    px-[30px] pt-[80px] md:pt-[96px] mt-[40px] md:mt-[96px`]
                     [@media(min-width:1034px)]:px-[70px]
                     [@media(min-width:1401px)]:px-[140px]
             
              bg-[#f3f2ee]'
-        >
-            {/* <div
+            >
+                {/* <div
                 className='flex flex-col md:flex-row justify-around
                             px-[30px]
                             [@media(min-width:1034px)]:pr-[70px]
                             [@media(min-width:1401px)]:pr-[140px]'
             > */}
-            <div
-                className='flex flex-col md:flex-row justify-around
+                <div
+                    className='flex flex-col md:flex-row justify-around
                             '
-            >
-                <h2
-                    ref={titleRef}
-                    className='text-6xl mb-6 md:mb-8 lg:mb-10 w-full md:w-[40%] drop-shadow-lg'
                 >
-                    Discover Our Top Destinations
-                </h2>
-                <p
-                    ref={paragraphRef}
-                    className='w-full md:w-[40%] text-[17px] font-light paragraph-style mb-0 md:mb-8 lg:mb-10'
-                >
-                    From sun soaked beaches and crystal clear waters to vibrant cityscapes bursting with life,
-                    Friigoo brings you handpicked travel experiences across the world's most stunning countries.
-                    Wander through ancient streets steeped in history, savor flavors that tell the story of a region,
-                    and witness landscapes that take your breath away from snow-capped mountains to lush tropical rainforests.
-                    Whether you're seeking adventure, relaxation, or cultural immersion,
-                    our curated packages are designed to create moments you'll cherish forever.
-                </p>
+                    <h2
+                        ref={titleRef}
+                        className='text-6xl mb-6 md:mb-8 lg:mb-10 w-full md:w-[40%] drop-shadow-lg'
+                    >
+                        Discover Our Top Destinations
+                    </h2>
+                    <p
+                        ref={paragraphRef}
+                        className='w-full md:w-[40%] text-[17px] font-light paragraph-style mb-0 md:mb-8 lg:mb-10'
+                    >
+                        From sun soaked beaches and crystal clear waters to vibrant cityscapes bursting with life,
+                        Friigoo brings you handpicked travel experiences across the world's most stunning countries.
+                        Wander through ancient streets steeped in history, savor flavors that tell the story of a region,
+                        and witness landscapes that take your breath away from snow-capped mountains to lush tropical rainforests.
+                        Whether you're seeking adventure, relaxation, or cultural immersion,
+                        our curated packages are designed to create moments you'll cherish forever.
+                    </p>
+                </div>
             </div>
-            <div className='pt-8 md:pt-16 flex gap-8 md:gap-16 flex-col md:flex-row pr-[30px] md:pr-0'>
-                {/* <div className='flex flex-row md:flex-col gap-4 order-1 md:order-0 justify-center md:justify-start'>
-                    <button
-                        ref={el => buttonsRef.current[0] = el}
-                        onClick={handlePrev}
-                        className='hover:opacity-70 transition-all cursor-pointer transform hover:scale-95 active:scale-90'
-                        disabled={currentIndex === 0}
-                        onMouseEnter={(e) => {
-                            gsap.to(e.currentTarget, {
-                                scale: 0.95,
-                                rotation: -5,
-                                duration: 0.3,
-                                ease: "power2.out"
-                            });
-                        }}
-                        onMouseLeave={(e) => {
-                            gsap.to(e.currentTarget, {
-                                scale: 1,
-                                rotation: 0,
-                                duration: 0.3,
-                                ease: "power2.out"
-                            });
-                        }}
-                    >
-                        <CircleChevronLeftIcon
-                            strokeWidth={0.5}
-                            color="#99a1af"
-                            className={`
-                                  w-[50px] h-[50px] md:w-[70px] md:h-[70px]
-                                  ${currentIndex === 0 ? 'opacity-40' : ''}
-                                `}
-                        />
-                    </button>
-                    <button
-                        ref={el => buttonsRef.current[1] = el}
-                        onClick={handleNext}
-                        className='hover:opacity-70 transition-all cursor-pointer transform hover:scale-95 active:scale-90'
-                        disabled={currentIndex === maxIndex}
-                        onMouseEnter={(e) => {
-                            gsap.to(e.currentTarget, {
-                                scale: 0.95,
-                                rotation: 5,
-                                duration: 0.3,
-                                ease: "power2.out"
-                            });
-                        }}
-                        onMouseLeave={(e) => {
-                            gsap.to(e.currentTarget, {
-                                scale: 1,
-                                rotation: 0,
-                                duration: 0.3,
-                                ease: "power2.out"
-                            });
-                        }}
-                    >
-                        <CircleChevronRightIcon
-                            strokeWidth={.5}
-                            color="#99a1af"
-                            className={`
-                                  w-[50px] h-[50px] md:w-[70px] md:h-[70px]
-                                  ${currentIndex === maxIndex ? 'opacity-40' : ''}
-                                `}
-                        />
-                    </button>
-                </div> */}
-                {/* <MaterialYouSlider
-                    countries={countries}
-                /> */}
+            <div className='pt-8 pb-[100px] md:pb-[96px] mb-[40px] md:mb-[96px]  md:pt-16 flex gap-8 md:gap-16 flex-col md:flex-row pr-[0px] md:pr-0 bg-[#f3f2ee]'>
                 <ExpoStyleSlider
                     countries={countries}
                 />
             </div>
-
-            {/* Dots indicator with premium animations */}
-            {/* <div className='hidden md:flex justify-center mt-8 gap-2'>
-                {Array.from({ length: maxIndex + 1 }).map((_, index) => (
-                    <button
-                        key={index}
-                        ref={el => dotsRef.current[index] = el}
-                        onClick={() => handleDotClick(index)}
-                        className={`w-3 h-3 rounded-full transition-all duration-300 transform hover:scale-125 ${index === currentIndex ? 'bg-gray-800' : 'bg-gray-400'
-                            }`}
-                        onMouseEnter={(e) => {
-                            gsap.to(e.currentTarget, {
-                                scale: 1.4,
-                                duration: 0.3,
-                                ease: "back.out(1.7)"
-                            });
-                        }}
-                        onMouseLeave={(e) => {
-                            gsap.to(e.currentTarget, {
-                                scale: index === currentIndex ? 1.1 : 1,
-                                duration: 0.3,
-                                ease: "power2.out"
-                            });
-                        }}
-                    />
-                ))}
-            </div> */}
-        </div>
+        </>
     )
 }
 

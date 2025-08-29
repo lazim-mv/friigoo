@@ -263,7 +263,7 @@ const Header = () => {
                     {/* Logo */}
                     <div className="w-36 aspect-[7/2] relative logo-container">
                         <a href="/">
-                            <Logo2 textFill={isMobileMenuOpen || isColorChange ? "black" : "white"} />
+                            <Logo2 textFill={isMobileMenuOpen || isColorChange ? "#3a459e" : "white"} />
                         </a>
                     </div>
 
@@ -285,7 +285,7 @@ const Header = () => {
 
                     {/* Header Actions */}
                     <div className="flex gap-6 header-actions">
-                        <button
+                        {/* <button
                             className={`
                             hidden md:block
                             z-20 p-3 backdrop-blur-sm rounded-xl transition-all duration-300 border group hover:scale-105 ${isColorChange
@@ -298,7 +298,7 @@ const Header = () => {
                                 color={isColorChange ? "black" : "white"}
                                 className="transition-transform duration-300 group-hover:scale-110"
                             />
-                        </button>
+                        </button> */}
 
                         <div
                             className={`md:hidden
@@ -320,11 +320,11 @@ const Header = () => {
             {/* Mobile Menu */}
             <div
                 ref={mobileMenuRef}
-                className="section fixed inset-0 z-[100] hidden flex-col  items-start justify-end bg-white"
+                className="section fixed inset-0 z-[100] hidden flex-col  items-start  bg-white mobileHeader"
                 style={{ display: 'none' }}
             >
                 {/* Menu Content */}
-                <nav className="flex flex-col items-start justify-center gap-8 text-center lists mobileMenu">
+                <nav className="flex flex-col items-start justify-center gap-8 text-center lists mobileMenu mt-[200px]">
                     {navOptions.map((nav, idx) => (
                         <a
                             key={idx}
@@ -342,7 +342,7 @@ const Header = () => {
                                 MozOsxFontSmoothing: 'grayscale'
                             }}
                         >
-                            <span className="relative z-10 block">{nav.label}</span>
+                            <span className="relative z-10 block" style={{ color: "#000" }}>{nav.label}</span>
                         </a>
                     ))}
                 </nav>

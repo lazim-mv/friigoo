@@ -55,14 +55,14 @@ const Section1 = ({
             },
         });
 
-        gsap.to(headingRef.current, {
-            scale: 1.02,
-            duration: 4,
-            ease: "power2.inOut",
-            yoyo: true,
-            repeat: -1,
-            delay: 2,
-        });
+        // gsap.to(headingRef.current, {
+        //     scale: 1.02,
+        //     duration: 4,
+        //     ease: "power2.inOut",
+        //     yoyo: true,
+        //     repeat: -1,
+        //     delay: 2,
+        // });
     }, []);
 
     return (
@@ -107,7 +107,7 @@ const Section1 = ({
 
                 <p
                     ref={subheadingRef}
-                    className="z-10 will-change-transform text-center"
+                    className="z-10 will-change-transform text-center w-full md:w-[70%] md:text-start"
                     style={{
                         color: "#fff",
                         textShadow: "0 2px 10px rgba(0,0,0,0.3)",
