@@ -24,7 +24,8 @@ const page = async () => {
                 *,
                 travel_package_days (*)
             `)
-            .order('created_at', { ascending: false });
+            .order('created_at', { ascending: false })
+            .order('day', { foreignTable: 'travel_package_days', ascending: true })
 
         if (error) {
             console.error('Database error:', error.message);

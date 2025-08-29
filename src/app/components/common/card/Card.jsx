@@ -28,15 +28,24 @@ const PackageCard = ({ travelPackages, btn = true }) => {
 
         setIsMobile(window.innerWidth < 768);
 
-        // Initial state - cards invisible and slightly down
+        const tl = gsap.timeline({
+            scrollTrigger: {
+                trigger: containerRef.current,
+                start: "top 100%",
+                end: "bottom 20%",
+                toggleActions: "play none none reverse"
+            }
+        });
+
+        // Initial state for cards
         gsap.set(cards, {
             opacity: 0,
             y: 30,
             scale: 0.95
         });
 
-        // Stagger animation for cards entrance
-        gsap.to(cards, {
+        // Add entrance animation to timeline
+        tl.to(cards, {
             opacity: 1,
             y: 0,
             scale: 1,
@@ -45,81 +54,17 @@ const PackageCard = ({ travelPackages, btn = true }) => {
             stagger: 0.1
         });
 
-        // Hover animations for each card
-        cards.forEach((card) => {
-            const image = card.querySelector('.card-image');
-            const content = card.querySelector('.card-content');
-            const buttons = card.querySelectorAll('.action-btn');
 
-            // Card hover effect
-            card.addEventListener('mouseenter', () => {
-                gsap.to(card, {
-                    y: -8,
-                    scale: 1.02,
-                    duration: 0.4,
-                    ease: "power2.out"
-                });
-
-                gsap.to(image, {
-                    scale: 1.05,
-                    duration: 0.6,
-                    ease: "power2.out"
-                });
-
-                // Subtle content lift
-                gsap.to(content, {
-                    y: -4,
-                    duration: 0.4,
-                    ease: "power2.out"
-                });
-
-
+        cards.forEach(card => {
+            card.addEventListener("mouseenter", () => {
+                gsap.to(card, { y: -8, duration: 0.3, ease: "power2.out" });
             });
-
-            card.addEventListener('mouseleave', () => {
-                gsap.to(card, {
-                    y: 0,
-                    scale: 1,
-                    duration: 0.4,
-                    ease: "power2.out"
-                });
-
-                gsap.to(image, {
-                    scale: 1,
-                    duration: 0.6,
-                    ease: "power2.out"
-                });
-
-                gsap.to(content, {
-                    y: 0,
-                    duration: 0.4,
-                    ease: "power2.out"
-                });
-
-
-            });
-
-            // Individual button hover effects
-            buttons.forEach(button => {
-                button.addEventListener('mouseenter', () => {
-                    gsap.to(button, {
-                        scale: 1.1,
-                        duration: 0.2,
-                        ease: "power2.out"
-                    });
-                });
-
-                button.addEventListener('mouseleave', () => {
-                    gsap.to(button, {
-                        scale: 1,
-                        duration: 0.2,
-                        ease: "power2.out"
-                    });
-                });
+            card.addEventListener("mouseleave", () => {
+                gsap.to(card, { y: 0, duration: 0.3, ease: "power2.out" });
             });
         });
-
     }, { scope: containerRef });
+
 
     return (
         <div className='section'>
@@ -128,7 +73,8 @@ const PackageCard = ({ travelPackages, btn = true }) => {
                     <div
                         onClick={() => router.push(`packages/${pkg.id}`)}
                         key={idx}
-                        className="package-card flex flex-col items-center w-full h-fit rounded-xl shadow-xl overflow-hidden cursor-pointer"
+                        className="package-card group/card flex flex-col items-center w-full h-fit rounded-xl shadow-xl 
+                        overflow-hidden cursor-pointer transition-transform duration-300 hover:-translate-y-2"
                     >
                         {/* Image */}
                         <div className="relative w-full overflow-hidden aspect-[4/3]">
@@ -136,7 +82,7 @@ const PackageCard = ({ travelPackages, btn = true }) => {
                                 <Image
                                     src={pkg.travel_package_days[0].img || carsvg}
                                     alt={`${pkg.destination} package`}
-                                    className="card-image aspect-[4/3] w-full object-cover transition-transform duration-300"
+                                    className="card-image aspect-[4/3] w-full group-hover/card:scale-105 object-cover transition-transform duration-800"
                                     width={500}
                                     height={300}
                                 />
@@ -202,7 +148,7 @@ const PackageCard = ({ travelPackages, btn = true }) => {
                             </div>
                             <hr className="mb-5 w-full bg-black/20 transition-all duration-300" />
                             {/* Description */}
-                            <p className='font-light transition-colors duration-300 hover:text-gray-700 md:min-h-[70px]'>
+                            <p className='font-light transition-colors duration-300 hover:text-gray-700 md:min-h-[80px]'>
                                 {pkg.shortdescription || ""}
                             </p>
                             <hr className="my-5 w-full bg-black/20 transition-all duration-300" />
@@ -210,11 +156,11 @@ const PackageCard = ({ travelPackages, btn = true }) => {
                             <div className="mb-5 flex justify-between w-full gap-2 flex-wrap">
                                 <div className="flex gap-5 md:gap-2 lg:gap-2">
                                     <button
-                                        className="action-btn cursor-pointer p-3 bg-transparent backdrop-blur-sm rounded-lg
+                                        className="action-btn cursor-pointer p-3 bg-transparent backdrop-blur-sm rounded-lg group/whatsapp
                                             hover:bg-black/20 transition-all duration-300 border border-[#d3d3d3]
-                                            hover:shadow-lg transform hover:-translate-y-1"
+                                            hover:shadow-lg transform "
                                     >
-                                        <MessageCircle size={20} color="black" className="transition-colors duration-300 hover:text-blue-600" />
+                                        <MessageCircle size={20} color="black" className="group-hover/whatsapp:hover:-translate-y-1 transition-colors duration-300 hover:text-blue-600" />
                                     </button>
                                     <button
                                         className="action-btn cursor-pointer p-3 bg-transparent backdrop-blur-sm rounded-lg
@@ -226,12 +172,12 @@ const PackageCard = ({ travelPackages, btn = true }) => {
                                 </div>
                                 <div className=''>
                                     <CTAButton1
-                                        label="Book Now"
+                                        label="View Details"
                                         textColor="#0a0a0a"
                                         bgColor="bg-black/10"
                                         borderColor="border-black/10"
                                         disableScale={true}
-                                        route={"/packages"}
+                                        route={`/packages/${pkg.id}`}
                                     />
                                 </div>
                             </div>

@@ -21,6 +21,7 @@ async function getPackage(id) {
                 travel_package_days (*)
             `)
             .eq('id', id)
+            .order('day', { foreignTable: 'travel_package_days', ascending: true })
             .single();
 
         if (error) {
