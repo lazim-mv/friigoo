@@ -18,7 +18,6 @@ const page = async () => {
     let hasError = false;
 
     try {
-        // Query database directly instead of calling API
         const { data, error } = await supabase
             .from('travel_packages')
             .select(`
