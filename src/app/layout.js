@@ -71,7 +71,7 @@ export const metadata = {
     "India holiday packages",
   ],
   authors: [{ name: "Friigoo" }],
-  metadataBase: new URL("https://friigoo.com"), 
+  metadataBase: new URL("https://friigoo.com"),
   openGraph: {
     title: "Friigoo | Best Tour & Travel Packages",
     description:
@@ -80,7 +80,7 @@ export const metadata = {
     siteName: "Friigoo",
     images: [
       {
-        url: "/og-image.jpg", 
+        url: "/og-image.jpg",
         width: 1200,
         height: 630,
         alt: "Friigoo - Explore the World with Our Tour Packages",
@@ -95,7 +95,7 @@ export const metadata = {
     description:
       "Explore tour packages, holiday deals, family trips & adventure tours with Friigoo.",
     images: ["/og-image.jpg"],
-    creator: "@friigoo", 
+    creator: "@friigoo",
   },
   robots: {
     index: true,
@@ -107,6 +107,10 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/faviconw.png" sizes="any" type="image/png" />
+        <link rel="apple-touch-icon" href="/favicon.png" />
+      </head>
       <body
         className={`${cormorantGaramond.variable} ${poppins.variable} ${bauhaus.variable} antialiased`}
       >

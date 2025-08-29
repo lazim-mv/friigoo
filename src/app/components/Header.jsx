@@ -263,7 +263,7 @@ const Header = () => {
                     {/* Logo */}
                     <div className="w-36 aspect-[7/2] relative logo-container">
                         <a href="/">
-                            <Logo2 textFill={isMobileMenuOpen || isColorChange ? "#3a459e" : "white"} />
+                            <Logo2 textFill={isMobileMenuOpen || isColorChange ? "#09093d" : "white"} />
                         </a>
                     </div>
 
