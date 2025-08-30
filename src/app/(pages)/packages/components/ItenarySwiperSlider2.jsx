@@ -154,7 +154,7 @@ const ItenarySwiperSlider2 = ({ pkgs }) => {
                                 </div>
                             ) : (
                                 <div className="w-full md:w-3/5 h-[300px] bg-gray-200 flex items-center justify-center">
-                                    <span className="text-gray-500">No Image</span>
+                                    <h2 className='flex items-center justify-center text-center h-full'>No Image Available</h2>
                                 </div>
                             )}
 

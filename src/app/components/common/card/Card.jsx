@@ -1,5 +1,5 @@
 "use client"
-import React, { use, useRef, useState } from 'react'
+import React, {  useRef, useState } from 'react'
 import { MapPin, MessageCircle, PhoneCall } from "lucide-react";
 import Image from 'next/image';
 // import CTAButton from '../CTAButton';
