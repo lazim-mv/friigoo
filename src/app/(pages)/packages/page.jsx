@@ -7,7 +7,7 @@ import Testimonials from '@/app/components/Testimonials'
 import { createClient } from '@supabase/supabase-js'
 import { PackageSearch } from 'lucide-react'
 
-export const revalidate = 600;
+export const revalidate = 0;
 
 const supabase = createClient(
     process.env.SUPABASE_URL,

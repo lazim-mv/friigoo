@@ -9,7 +9,7 @@ import Banner from "./(pages)/about-us/components/Banner";
 import bannberImg from '../../public/banner/4.webp'
 import { createClient } from "@supabase/supabase-js";
 
-export const revalidate = 600;
+export const revalidate = 0;
 
 const supabase = createClient(
   process.env.SUPABASE_URL,
