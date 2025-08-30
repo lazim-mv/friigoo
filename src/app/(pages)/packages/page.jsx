@@ -7,6 +7,8 @@ import Testimonials from '@/app/components/Testimonials'
 import { createClient } from '@supabase/supabase-js'
 import { PackageSearch } from 'lucide-react'
 
+export const revalidate = 600;
+
 const supabase = createClient(
     process.env.SUPABASE_URL,
     process.env.SUPABASE_SERVICE_KEY
@@ -31,13 +33,6 @@ const page = async () => {
             hasError = true;
         } else {
             packages = data || [];
-            // Add debug logging
-            console.log('Total packages fetched:', packages.length);
-            console.log('Packages data:', packages.map(pkg => ({
-                id: pkg.id,
-                title: pkg.title || pkg.name,
-                featured: pkg.featured
-            })));
         }
     } catch (error) {
         console.error('Page error:', error);
@@ -69,12 +64,10 @@ const page = async () => {
                     </p>
                 </div>
             ) : (
-                <div>
-                    <PackageCard
-                        btn={false}
-                        travelPackages={packages}
-                    />
-                </div>
+                <PackageCard
+                    btn={false}
+                    travelPackages={packages}
+                />
             )}
 
             <ContactForm />
