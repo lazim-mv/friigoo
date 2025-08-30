@@ -9,6 +9,8 @@ import Banner from "./(pages)/about-us/components/Banner";
 import bannberImg from '../../public/banner/4.webp'
 import { createClient } from "@supabase/supabase-js";
 
+export const revalidate = 0;
+
 const supabase = createClient(
   process.env.SUPABASE_URL,
   process.env.SUPABASE_SERVICE_KEY
@@ -25,6 +27,7 @@ export default async function Home() {
                 *,
                 travel_package_days (*)
             `)
+      .eq('featured', true)
       .order('created_at', { ascending: false })
       .order('day', { foreignTable: 'travel_package_days', ascending: true })
 
@@ -48,7 +51,7 @@ export default async function Home() {
       <About />
       {!showEmptyState && <PackageCard
         btn={false}
-        travelPackages={packages && packages !== undefined && packages.splice(0, 3)} />
+        travelPackages={packages} />
       }
       <Container4 />
       <Container5 />
